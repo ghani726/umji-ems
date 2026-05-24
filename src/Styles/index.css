@@ -1,6 +1,69 @@
 @import "tailwindcss";
 
 
+@theme {
+  /* ========================================================================
+    UMJI POS 4.0 - BRAND COLOR PALETTE (THE PURPLE THEME)
+    ========================================================================
+  */
+
+  /* Dynamic Royal Purple Accent Scale ( Hallmark Identity ) */
+  --color-primary-50: #f2f0ff;  /* Lightest pastel tint: active selections, alert cards, hover accents (Light Mode) */
+  --color-primary-100: #e5e0ff; /* Soft highlight background fill */
+  --color-primary-200: #d1c8ff; /* Active state wraps, focusing border tints */
+  --color-primary-300: #b1a4ff; /* Lavender outline borders, disabled button active elements */
+  --color-primary-400: #8f7cff; /* Balanced focus glow / accent boundary color */
+  --color-primary-500: #7152ff; /* Primary text indicators and vibrant active elements */
+  --color-primary-600: #5d2bff; /* THE CORE ROYAL PURPLE: CTA buttons, primary loaders, active navigation */
+  --color-primary-700: #4a12f3; /* Hover & active press shade for core action buttons */
+  --color-primary-800: #3e0bd9; /* Bold brand text elements and dark mode accent highlights */
+  --color-primary-900: #3309b3; /* Deep solid headers or dark mode control frames */
+  --color-primary-950: #1e058a; /* Midnight royal background shadows */
+
+  /* Cool Saturated Slate / Obsidian Scale ( Neutral text & Canvas backdrops ) */
+  --color-secondary-50: #f7f7f9;  /* Default workspace canvas background (Light Mode) */
+  --color-secondary-100: #ededf2; /* Panel backgrounds, item cards, and primary tables */
+  --color-secondary-200: #e0e0e8; /* Standard dividers, disabled status buttons, input borders */
+  --color-secondary-300: #c9c9d6; /* Contrast boundary lines and secondary borders */
+  --color-secondary-400: #ababbb; /* Inactive or secondary label font fields */
+  --color-secondary-500: #8d8da1; /* Muted meta elements, system timestamp labels, sub-headers */
+  --color-secondary-600: #717186; /* General dashboard body copy */
+  --color-secondary-700: #5f5f70; /* Inactive dark outlines and borders */
+  --color-secondary-800: #4d4d5a; /* Inner panel and cart wrapper backdrops (Dark Mode) */
+  --color-secondary-900: #3f3f4a; /* Base modal container backgrounds and system cards (Dark Mode) */
+  --color-secondary-950: #24242b; /* Outer workspace app canvas background (Dark Mode) */
+
+  /* Contextual Material You Lavender Surfaces */
+  --color-surface-50: #fbf8ff;   /* Clean pastel-purple container shades */
+  --color-surface-200: #f2eeff;  /* Structured contextual modules */
+  --color-surface-800: #8762ff;  /* High-energy active borders */
+  --color-surface-950: #3a00e5;  /* Super-charged interactive boundaries */
+
+  /* ========================================================================
+    STRUCTURAL GEOMETRIES & BORDER RADIUS (MATERIAL YOU PATTERN)
+    ========================================================================
+  */
+  --radius-3xl: 1.5rem; /* 24px: High-level interfaces (Main Modals, Side-panels, Checkout Baskets) */
+  --radius-2xl: 1.0rem; /* 16px: Intermediate layouts (Cards, Multi-view summary brackets) */
+  --radius-xl: 0.75rem; /* 12px: Atomic control elements (Search inputs, Grid cells) */
+  --radius-lg: 0.5rem;  /* 8px: Minimal controls (Badges, small action buttons, form fields) */
+
+  /* ========================================================================
+    DYNAMIC MOTION, KEYFRAMES & TRANSITIONS
+    ========================================================================
+  */
+  --animate-fade-in: fade-in 0.3s ease-in-out;
+  --animate-slide-in-up: slide-in-up 0.3s ease-out;
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes slide-in-up {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+}
 #root {
     background: #f4f1ff;
     width: 100%;
@@ -29,9 +92,10 @@
     background: var(--color-gray-100);
     padding: 0.3rem;
     color: var(--color-gray-500);
+    pointer-events: none;
 }
 
-.input-box input:focus + label, .input-box input:not(:placeholder-shown) +label {
+.input-box input:focus + label, .input-box input:not(:placeholder-shown) +label, input:-webkit-autofill ~ label {
     top: -2%;
     font-size: 12px;
     background: linear-gradient(var(--color-white), var(--color-gray-100));
@@ -41,4 +105,13 @@
 
 .input-box:focus-within {
     border: 2px solid var(--color-purple-600);
+}
+
+.input-box input:focus ~ label {
+  color: var(--color-purple-600); /* Label text becomes blue ONLY when actively typing */
+}
+
+/* 5. Filled-But-Not-Focused Specific Colors */
+.input-box input:not(:placeholder-shown):not(:focus) ~ label {
+  color: var(--color-gray-500); /* Subdued grey when data exists but user clicked away */
 }
