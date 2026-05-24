@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-
 @theme {
   /* ========================================================================
     UMJI POS 4.0 - BRAND COLOR PALETTE (THE PURPLE THEME)
@@ -8,7 +7,7 @@
   */
 
   /* Dynamic Royal Purple Accent Scale ( Hallmark Identity ) */
-  --color-primary-50: #f2f0ff;  /* Lightest pastel tint: active selections, alert cards, hover accents (Light Mode) */
+  --color-primary-50: #f2f0ff; /* Lightest pastel tint: active selections, alert cards, hover accents (Light Mode) */
   --color-primary-100: #e5e0ff; /* Soft highlight background fill */
   --color-primary-200: #d1c8ff; /* Active state wraps, focusing border tints */
   --color-primary-300: #b1a4ff; /* Lavender outline borders, disabled button active elements */
@@ -21,7 +20,7 @@
   --color-primary-950: #1e058a; /* Midnight royal background shadows */
 
   /* Cool Saturated Slate / Obsidian Scale ( Neutral text & Canvas backdrops ) */
-  --color-secondary-50: #f7f7f9;  /* Default workspace canvas background (Light Mode) */
+  --color-secondary-50: #f7f7f9; /* Default workspace canvas background (Light Mode) */
   --color-secondary-100: #ededf2; /* Panel backgrounds, item cards, and primary tables */
   --color-secondary-200: #e0e0e8; /* Standard dividers, disabled status buttons, input borders */
   --color-secondary-300: #c9c9d6; /* Contrast boundary lines and secondary borders */
@@ -34,19 +33,19 @@
   --color-secondary-950: #24242b; /* Outer workspace app canvas background (Dark Mode) */
 
   /* Contextual Material You Lavender Surfaces */
-  --color-surface-50: #fbf8ff;   /* Clean pastel-purple container shades */
-  --color-surface-200: #f2eeff;  /* Structured contextual modules */
-  --color-surface-800: #8762ff;  /* High-energy active borders */
-  --color-surface-950: #3a00e5;  /* Super-charged interactive boundaries */
+  --color-surface-50: #fbf8ff; /* Clean pastel-purple container shades */
+  --color-surface-200: #f2eeff; /* Structured contextual modules */
+  --color-surface-800: #8762ff; /* High-energy active borders */
+  --color-surface-950: #3a00e5; /* Super-charged interactive boundaries */
 
   /* ========================================================================
     STRUCTURAL GEOMETRIES & BORDER RADIUS (MATERIAL YOU PATTERN)
     ========================================================================
   */
   --radius-3xl: 1.5rem; /* 24px: High-level interfaces (Main Modals, Side-panels, Checkout Baskets) */
-  --radius-2xl: 1.0rem; /* 16px: Intermediate layouts (Cards, Multi-view summary brackets) */
+  --radius-2xl: 1rem; /* 16px: Intermediate layouts (Cards, Multi-view summary brackets) */
   --radius-xl: 0.75rem; /* 12px: Atomic control elements (Search inputs, Grid cells) */
-  --radius-lg: 0.5rem;  /* 8px: Minimal controls (Badges, small action buttons, form fields) */
+  --radius-lg: 0.5rem; /* 8px: Minimal controls (Badges, small action buttons, form fields) */
 
   /* ========================================================================
     DYNAMIC MOTION, KEYFRAMES & TRANSITIONS
@@ -56,62 +55,81 @@
   --animate-slide-in-up: slide-in-up 0.3s ease-out;
 
   @keyframes fade-in {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
   @keyframes slide-in-up {
-    from { transform: translateY(20px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
   }
 }
-#root {
-    background: #f4f1ff;
-    width: 100%;
-    height: 100dvh;
-}
 
+/* @variant dark (&:where([data-theme="dark"], [data-theme="dark"] *)); */
+#root {
+  background: var(--color-secondary-100);
+  width: 100%;
+  height: 100dvh;
+}
 
 .input-box {
-    position: relative;
-    width: 100%;
-    height: 50px;
-    border: 2px solid var(--color-gray-300);
+  position: relative;
+  width: 100%;
+  height: 50px;
+  border: 2px solid var(--color-secondary-200);
+  background-color: var(--color-secondary-100);
+  font-size: 1rem;
 }
 .input-box input {
-    position: absolute;
-    width: 100%; 
-    height: 100%;
+  position: absolute;
+  width: 82%;
+  height: 100%;
 }
 
 .input-box label {
-    position: absolute;
-    top: 50%;
-    left: 1rem;
-    transform: translateY(-50%);
-    transition: all ease 0.3s;
-    background: var(--color-gray-100);
-    padding: 0.3rem;
-    color: var(--color-gray-500);
-    pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+  transition: all ease 0.3s;
+  background: var(--color-secondary-100);
+  padding: 0.3rem;
+  color: var(--color-gray-500);
+  pointer-events: none;
 }
 
-.input-box input:focus + label, .input-box input:not(:placeholder-shown) +label, input:-webkit-autofill ~ label {
-    top: -2%;
-    font-size: 12px;
-    background: linear-gradient(var(--color-white), var(--color-gray-100));
-    color: var(--color-purple-600);
-    font-weight: 600;
+.input-box input:focus + label,
+.input-box input:not(:placeholder-shown) + label,
+input:-webkit-autofill ~ label {
+  top: -2%;
+  font-size: 12px;
+  background: linear-gradient(var(--color-white), var(--color-secondary-100));
+  color: var(--color-primary-600);
+  font-weight: 600;
 }
 
 .input-box:focus-within {
-    border: 2px solid var(--color-purple-600);
+  border: 2px solid var(--color-primary-600);
 }
 
 .input-box input:focus ~ label {
-  color: var(--color-purple-600); /* Label text becomes blue ONLY when actively typing */
+  color: var(
+    --color-primary-600
+  ); /* Label text becomes blue ONLY when actively typing */
 }
 
 /* 5. Filled-But-Not-Focused Specific Colors */
 .input-box input:not(:placeholder-shown):not(:focus) ~ label {
-  color: var(--color-gray-500); /* Subdued grey when data exists but user clicked away */
+  color: var(
+    --color-gray-500
+  ); /* Subdued grey when data exists but user clicked away */
 }
