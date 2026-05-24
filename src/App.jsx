@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import { Auth } from "./contexts/AuthContext";
 import LoginPage from "./pages/login";
+import Main from "./pages/Website/Main";
 
 const App = () => {
 
@@ -9,7 +10,7 @@ const App = () => {
   console.log(newData);
   
   return (
-    <LoginPage></LoginPage>
+    <Main></Main>
   )
 }
 
