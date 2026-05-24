@@ -1,6 +1,6 @@
 import { useContext } from "react"
-import { Auth } from "./contexts/AuthContext";
-import LoginPage from "./pages/login";
+import Auth from "./contexts/Auth";
+import LoginPage from "./pages/Login";
 
 const App = () => {
 

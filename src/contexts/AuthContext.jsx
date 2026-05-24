@@ -1,6 +1,4 @@
-import { createContext } from 'react'
-
-export const Auth = createContext()
+import Auth from "./Auth"
 
 const data = "hello from context"
 const AuthContext = ({children}) => {

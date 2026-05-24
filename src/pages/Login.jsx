@@ -1,4 +1,4 @@
-import InputBox from "../Components/InputBox"
+import { Eye } from 'lucide-react';
 
 const LoginPage = () => {
   return (
@@ -7,9 +7,15 @@ const LoginPage = () => {
       <h4 className="font-normal text-sm">Login into your account</h4>
 
       <div className="inputFeilds w-full flex flex-col gap-4">
-        <InputBox label={"UserName"}></InputBox>
-        <InputBox label={"Password"} type={"password"}></InputBox>
-
+        <div className="input-box text-lg bg-gray-100 rounded-2xl px-4">
+          <input type="text" className="outline-none" placeholder=" "/>
+          <label htmlFor="userName">Username</label>
+        </div>
+        <div className="input-box text-lg bg-gray-100 rounded-2xl px-4">
+          <input type="password" className="outline-none" placeholder=" "/>
+          <label htmlFor="userName">Password</label>
+          <Eye className='absolute right-4 top-1/2 -translate-y-1/2 text-secondary-400 bg-blue-600'></Eye>
+        </div>
       </div>
 
     </div>
