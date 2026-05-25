@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+* {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
 @theme {
   /* ========================================================================
     UMJI POS 4.0 - BRAND COLOR PALETTE (THE PURPLE THEME)
