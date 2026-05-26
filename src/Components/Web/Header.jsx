@@ -35,7 +35,7 @@ const Header = () => {
   window.addEventListener("load", displayCheck);
 
   return (
-    <header className="flex justify-between items-center h-14 w-full bg-white px-8 duration-300 ease-in-out transition-all">
+    <header className="flex sticky justify-between top-0 shadow-[0_0_10px_rgba(0,0,0,0.3)] items-center h-14 w-full bg-white px-8 duration-300 ease-in-out transition-all">
       {/* Main Heading */}
       <h1 className="text-2xl cursor-pointer font-bold text-primary-700">
         UMJI EMS
