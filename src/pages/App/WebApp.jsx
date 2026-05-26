@@ -4,15 +4,20 @@ import Tasks from "./Tasks"
 import Dashboard from "./Dashboard"
 import Error from "../Website/Error"
 import SideBar from "../../Components/App/SideBar"
+import { useState } from "react"
+
+
 
 const WebApp = () => {
+  const [hide, setHide] = useState(false)
+  
   return (
     <>
-        <Header></Header>
-        <main className="flex bg-blue-800 w-full h-auto">
-          <SideBar></SideBar>
+        <Header hide={hide} setHide={setHide}></Header>
+        <main className="flex w-full h-auto overflow-hidden">
+          <SideBar hide={hide} setHide={setHide}></SideBar>
 
-          <section className="flex w-full h-full">
+          <section className="flex w-full h-full overflow-hidden">
             <Routes>
               <Route path="" element={<Dashboard></Dashboard>}></Route>
               <Route path="/tasks" element={<Tasks></Tasks>}></Route>
