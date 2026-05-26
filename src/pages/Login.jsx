@@ -7,7 +7,6 @@ const LoginPage = () => {
   const data = useContext(Auth);
 
   const check = () =>{
-    let a = null
     if(data.userNameReg.test(data.userName)){
       console.log("true");
     } else {

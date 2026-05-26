@@ -58,6 +58,14 @@
   --animate-fade-in: fade-in 0.3s ease-in-out;
   --animate-slide-in-up: slide-in-up 0.3s ease-out;
 
+  /* ========================================================================
+    Mobile Design
+    ========================================================================
+  */
+
+  --breakpoint-xs: 375px;
+
+
   @keyframes fade-in {
     from {
       opacity: 0;
@@ -82,8 +90,7 @@
 #root {
   background: var(--color-secondary-100);
   width: 100%;
-  height: 100dvh;
-  overflow: hidden;
+  min-height: 100dvh;
 }
 
 .input-box {

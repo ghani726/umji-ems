@@ -3,6 +3,7 @@ import Header from '../../Components/Web/Header'
 import Home from './Home'
 import Pricing from './Pricing'
 import Error from './Error'
+import Footer from '../../Components/Web/Footer'
 const Main = () => {
   return (
     <>
@@ -12,6 +13,7 @@ const Main = () => {
         <Route path="pricing" element={<Pricing></Pricing>}></Route>
         <Route path="*" element={<Error></Error>}></Route>
       </Routes>
+      <Footer></Footer>
 
     </>
   )
