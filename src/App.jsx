@@ -2,6 +2,7 @@
 import { Route, Routes } from "react-router-dom";
 import LoginPage from "./pages/login";
 import Main from "./pages/Website/Main";
+import WebApp from "./pages/App/WebApp";
 
 const App = () => {
   
@@ -9,6 +10,8 @@ const App = () => {
     <Routes>
       <Route path="*" element={<Main></Main>}></Route>
       <Route path="/login" element={<LoginPage></LoginPage>}></Route>
+      <Route path="/app/*" element={<WebApp></WebApp>}></Route>
+      
     </Routes>
   )
 }
