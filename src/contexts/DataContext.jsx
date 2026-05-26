@@ -23,28 +23,19 @@ class Company {
     this.tasks = [];
   }
   addEmployee(
-    name,
-    email,
-    birthday,
-    userName,
-    password,
-    companyID,
-    department,
-    position,
-    experience,
-    salary,
+    obj
   ) {
     const employee = new Employee(
-      name,
-      email,
-      birthday,
-      userName,
-      password,
-      companyID,
-      department,
-      position,
-      experience,
-      salary,
+      obj.name,
+      obj.email,
+      obj.birthday,
+      obj.userName,
+      obj.password,
+      obj.companyID,
+      obj.department,
+      obj.position,
+      obj.experience,
+      obj.salary,
     );
     this.employees.push(employee);
   }
@@ -53,9 +44,6 @@ class Company {
     assignedTo.assignTask(task);
   }
 }
-
-
-
 
 class Employee {
   constructor(
@@ -122,25 +110,35 @@ const companyList = {
   },
 };
 
-
-
-const company = companyList.addCompany("UMJI", "umji","Muhammad Ghani Ul Hassan", "ghani726@outlook.com", "ghani", 2026, "1122")
-const employee = companyList.companies[0].addEmployee("Zeeshan Malik", "zeeshan@outlook.com", "2008-02-08", "zeeshan", "4344", "umji", "Dev", "Full Stack Web Developer", "0", "3,00,000")
-
-
+const company = companyList.addCompany(
+  "UMJI",
+  "umji",
+  "Muhammad Ghani Ul Hassan",
+  "ghani726@outlook.com",
+  "ghani",
+  2026,
+  "1122",
+);
+const employee = companyList.companies[0].addEmployee(
+  "Zeeshan Malik",
+  "zeeshan@outlook.com",
+  "2008-02-08",
+  "zeeshan",
+  "4344",
+  "umji",
+  "Dev",
+  "Full Stack Web Developer",
+  "0",
+  "3,00,000",
+);
 
 localStorage.setItem("companies", JSON.stringify(companyList));
 
-
-
 const DataContext = ({ children }) => {
-
-
-
   const [EmployeeDetails, setEmployeeDetails] = useState({
     name: "",
     email: "",
-    birthday: "", 
+    birthday: "",
     userName: "",
     password: "",
     companyID: "",
@@ -159,8 +157,31 @@ const DataContext = ({ children }) => {
     foundingDate: 2026,
     password: "",
   });
+
+  
+    
+
   const [mobile, setMobile] = useState(false);
 
+  const [successOfRegistrationAsEmployee, setSuccessOfRegistrationAsEmployee] =
+    useState(false);
+  const [successOfRegistrationAsCompany, setSuccessOfRegistrationAsCompany] =
+    useState(false);
+
+
+  if(successOfRegistrationAsEmployee){
+    setTimeout(() => {
+      const employee = companyList.companies[0].addEmployee(EmployeeDetails);
+      localStorage.setItem("companies", JSON.stringify(companyList));
+      console.log("Hello");
+      console.log(companyList);
+    }, 2000);
+  }
+
+
+  console.log(companyList);
+
+  
   return (
     <Data.Provider
       value={{
@@ -174,6 +195,10 @@ const DataContext = ({ children }) => {
         setEmployeeDetails,
         CompanyDetails,
         setCompanyDetails,
+        successOfRegistrationAsEmployee,
+        setSuccessOfRegistrationAsEmployee,
+        successOfRegistrationAsCompany,
+        setSuccessOfRegistrationAsCompany,
       }}
     >
       {children}

@@ -56,7 +56,7 @@ const PersonalDetails = (props) => {
       isValid = false;
     } else if (props.passwordE !== props.confirmPasswordE) {
       toast.error("Passwords don't match.");
-      isValid = false; 
+      isValid = false;
     }
 
     return isValid;
@@ -75,7 +75,7 @@ const PersonalDetails = (props) => {
         isValidInDB = false;
       } else {
         //eslint-disable-next-line
-        company.employees.map((employee, indexOfEmployee) => { 
+        company.employees.map((employee, indexOfEmployee) => {
           if (props.emailE === employee.email) {
             toast.error(
               "Account with this email already exists. Try logging in.",
@@ -206,16 +206,11 @@ const ProffesionalDetails = (props) => {
   const companyIDReg = /^(?!.*\.\.)(?!.*\_\_)[a-z][a-z0-9._]{3,15}$/i; //eslint-disable-line
   const experienceNsalaryReg = /^[0-9]+$/; //eslint-disable-line
 
-
-    const dataBase = useContext(Data);
+  const dataBase = useContext(Data);
 
   const checkValues = () => {
-
     // props.setsxperienceE(props.experienceE.trim())
-    console.log(props.experienceE);
-    console.log(props.experienceE.trim());
-    
-    
+
     let isValid = true;
     if (!companyIDReg.test(props.companyIDE)) {
       toast.error(
@@ -237,7 +232,7 @@ const ProffesionalDetails = (props) => {
         "Please write your position.(At which you are interested to work on).",
       );
       isValid = false;
-    } else if (props.experienceE === "" ) {
+    } else if (props.experienceE === "") {
       toast.error("Please write your experience. (You can also write 0)");
       isValid = false;
     } else if (!props.salaryE) {
@@ -256,7 +251,7 @@ const ProffesionalDetails = (props) => {
       if (props.companyIDE !== company.companyID) {
         toast.error("No Company exists with this id.");
         isValidInDB = false;
-      } 
+      }
     });
 
     return isValidInDB;
@@ -266,10 +261,25 @@ const ProffesionalDetails = (props) => {
     if (props.next) {
       toast.dismiss(); // Clears old toast notifications instantly
       if (checkInDB() && checkValues()) {
-        toast.success("Account created successfully.");
+        toast.success("Account created successfully.", );
         props.navigate("/login", { replace: true });
+        props.setSuccessOfRegistrationAsEmployee(true);
+        dataBase.setEmployeeDetails({
+          name: props.nameE,
+          email: props.emailE,
+          birthday: props.birthdayE, 
+          userName: props.userNameE,
+          password: props.passwordE,
+          companyID: props.companyIDE,
+          department: props.departmentE,
+          position: props.positionE,
+          experience: props.experienceE,
+          salary: props.salaryE,
+        })
       }
       props.setNext(false);
+    //   props.setSuccessOfRegistrationAsEmployee(false)
+    
     }
   }, [props.next]); // eslint-disable-line
 
@@ -350,10 +360,26 @@ const ProffesionalDetails = (props) => {
 };
 
 const EmployeeRegister = (props) => {
+  // Making the success state false
+
+  props.setSuccessOfRegistrationAsEmployee(false);
+
+  //   Steps of Form
   const [step, setStep] = useState(0);
+
+  //   Hook to redirect to login
   const navigate = useNavigate();
+
+  //   Next button State
   const [next, setNext] = useState(false);
 
+    const dataBase = useContext(Data);
+
+
+
+
+
+  
   return (
     <>
       <div className="flex flex-col gap-6 w-full">

@@ -22,8 +22,7 @@ const RegisterPage = () => {
   const [positionE, setPositionE] = useState("");
   const [experienceE, setsxperienceE] = useState("");
   const [salaryE, setSalaryE] = useState(0);
-  const [successOfRegistrationAsEmployee, setSuccessOfRegistrationAsEmployee] =
-    useState(false);
+  
 
   // Company Details
 
@@ -35,8 +34,34 @@ const RegisterPage = () => {
   const [foundingDateC, setFoundingDateC] = useState(2026);
   const [passwordC, setPasswordC] = useState("");
   const [confirmPasswordC, setConfirmPasswordC] = useState("");
-  const [successOfRegistrationAsCompany, setSuccessOfRegistrationAsCompany] =
-    useState(false);
+
+
+  // if(dataBase.successOfRegistrationAsEmployee){
+  //   dataBase.setEmployeeDetails({
+  //     nameE,
+  //     emailE,
+  //     birthdayE, 
+  //     userNameE,
+  //     passwordE,
+  //     companyIDE,
+  //     departmentE,
+  //     positionE,
+  //     experienceE,
+  //     salaryE,
+  //   })
+  // }
+
+  if(dataBase.successOfRegistrationAsCompany){
+    dataBase.setCompanyDetails({
+      nameC,
+      companyID,
+      adminNameC,
+      emailC,
+      usernameC,
+      foundingDateC,
+      passwordC,
+    })
+  }
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-secondary-100 p-4 animate-fadeIn">
@@ -100,8 +125,8 @@ const RegisterPage = () => {
             setPasswordC={setPasswordC}
             confirmPasswordC={confirmPasswordC}
             setConfirmPasswordC={setConfirmPasswordC}
-            successOfRegistrationAsCompany={successOfRegistrationAsCompany}
-            setSuccessOfRegistrationAsCompany={setSuccessOfRegistrationAsCompany}
+            successOfRegistrationAsCompany={dataBase.successOfRegistrationAsCompany}
+            setSuccessOfRegistrationAsCompany={dataBase.setSuccessOfRegistrationAsCompany}
           ></CompanyRegister>
         ) : (
           <EmployeeRegister
@@ -128,8 +153,8 @@ const RegisterPage = () => {
             setsxperienceE={setsxperienceE}
             salaryE={salaryE}
             setSalaryE={setSalaryE}
-            successOfRegistrationAsEmployee={successOfRegistrationAsEmployee}
-            setSuccessOfRegistrationAsEmployee={setSuccessOfRegistrationAsEmployee}
+            successOfRegistrationAsEmployee={dataBase.successOfRegistrationAsEmployee}
+            setSuccessOfRegistrationAsEmployee={dataBase.setSuccessOfRegistrationAsEmployee}
           ></EmployeeRegister>
         )}
       </div>
