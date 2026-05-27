@@ -36,7 +36,7 @@ const Dashboard = () => {
                 <h4 className="font-bold text-3xl">2</h4>
               </div>
             </div>
-            <div className="py-1 px-2 text-secondary-600 bg-secondary-100 w-fit text-sm rounded-lg">
+            <div className="py-1 px-2 text-secondary-600 bg-secondary-100 w-fit text-sm rounded-lg cursor-pointer">
               View List
             </div>
           </div>
@@ -50,7 +50,7 @@ const Dashboard = () => {
                 <h4 className="font-bold text-3xl">2</h4>
               </div>
             </div>
-            <div className="py-1 px-2 text-secondary-600 bg-secondary-100 w-fit text-sm rounded-lg">
+            <div className="py-1 px-2 text-secondary-600 bg-secondary-100 w-fit text-sm rounded-lg cursor-pointer">
               View List
             </div>
           </div>
@@ -64,7 +64,7 @@ const Dashboard = () => {
                 <h4 className="font-bold text-3xl">2</h4>
               </div>
             </div>
-            <div className="py-1 px-2 text-secondary-600 bg-secondary-100 w-fit text-sm rounded-lg">
+            <div className="py-1 px-2 text-secondary-600 bg-secondary-100 w-fit text-sm rounded-lg cursor-pointer">
               View List
             </div>
           </div>
@@ -78,7 +78,7 @@ const Dashboard = () => {
                 <h4 className="font-bold text-3xl">0</h4>
               </div>
             </div>
-            <div className="py-1 px-2 text-secondary-600 bg-secondary-100 w-fit text-sm rounded-lg">
+            <div className="py-1 px-2 text-secondary-600 bg-secondary-100 w-fit text-sm rounded-lg cursor-pointer">
               View List
             </div>
           </div>
@@ -92,7 +92,7 @@ const Dashboard = () => {
                 <h4 className="font-bold text-3xl">2</h4>
               </div>
             </div>
-            <div className="py-1 px-2 text-secondary-600 bg-secondary-100 w-fit text-sm rounded-lg">
+            <div className="py-1 px-2 text-secondary-600 bg-secondary-100 w-fit text-sm rounded-lg cursor-pointer">
               View List
             </div>
           </div>
@@ -106,7 +106,7 @@ const Dashboard = () => {
                 <h4 className="font-bold text-3xl">0</h4>
               </div>
             </div>
-            <div className="py-1 px-2 text-secondary-600 bg-secondary-100 w-fit text-sm rounded-lg">
+            <div className="py-1 px-2 text-secondary-600 bg-secondary-100 w-fit text-sm rounded-lg cursor-pointer">
               View List
             </div>
           </div>
@@ -120,7 +120,7 @@ const Dashboard = () => {
                 <h4 className="font-bold text-3xl">2</h4>
               </div>
             </div>
-            <div className="py-1 px-2 text-secondary-600 bg-secondary-100 w-fit text-sm rounded-lg">
+            <div className="py-1 px-2 text-secondary-600 bg-secondary-100 w-fit text-sm rounded-lg cursor-pointer">
               View List
             </div>
           </div>
@@ -134,7 +134,7 @@ const Dashboard = () => {
                 <h4 className="font-bold text-3xl">0</h4>
               </div>
             </div>
-            <div className="py-1 px-2 text-secondary-600 bg-secondary-100 w-fit text-sm rounded-lg">
+            <div className="py-1 px-2 text-secondary-600 bg-secondary-100 w-fit text-sm rounded-lg cursor-pointer">
               View List
             </div>
           </div>
@@ -148,7 +148,7 @@ const Dashboard = () => {
                 <h4 className="font-bold text-3xl">0</h4>
               </div>
             </div>
-            <div className="py-1 px-2 text-secondary-600 bg-secondary-100 w-fit text-sm rounded-lg">
+            <div className="py-1 px-2 text-secondary-600 bg-secondary-100 w-fit text-sm rounded-lg cursor-pointer">
               View List
             </div>
           </div>
@@ -162,7 +162,7 @@ const Dashboard = () => {
                 <h4 className="font-bold text-3xl">0</h4>
               </div>
             </div>
-            <div className="py-1 px-2 text-secondary-600 bg-secondary-100 w-fit text-sm rounded-lg">
+            <div className="py-1 px-2 text-secondary-600 bg-secondary-100 w-fit text-sm rounded-lg cursor-pointer">
               View List
             </div>
           </div>
@@ -188,7 +188,7 @@ const Dashboard = () => {
                 <h4 className="font-bold text-3xl">0</h4>
               </div>
             </div>
-            <div className="py-1 px-2 text-secondary-600 bg-secondary-100 w-fit text-sm rounded-lg">
+            <div className="py-1 px-2 text-secondary-600 bg-secondary-100 w-fit text-sm rounded-lg cursor-pointer">
               View List
             </div>
           </div>
@@ -202,7 +202,7 @@ const Dashboard = () => {
                 <h4 className="font-bold text-3xl">0</h4>
               </div>
             </div>
-            <div className="py-1 px-2 text-secondary-600 bg-secondary-100 w-fit text-sm rounded-lg">
+            <div className="py-1 px-2 text-secondary-600 bg-secondary-100 w-fit text-sm rounded-lg cursor-pointer">
               View List
             </div>
           </div>
@@ -216,7 +216,7 @@ const Dashboard = () => {
                 <h4 className="font-bold text-3xl">0</h4>
               </div>
             </div>
-            <div className="py-1 px-2 text-secondary-600 bg-secondary-100 w-fit text-sm rounded-lg">
+            <div className="py-1 px-2 text-secondary-600 bg-secondary-100 w-fit text-sm rounded-lg cursor-pointer">
               View List
             </div>
           </div>
@@ -230,7 +230,7 @@ const Dashboard = () => {
                 <h4 className="font-bold text-3xl">2</h4>
               </div>
             </div>
-            <div className="py-1 px-2 text-secondary-600 bg-secondary-100 w-fit text-sm rounded-lg">
+            <div className="py-1 px-2 text-secondary-600 bg-secondary-100 w-fit text-sm rounded-lg cursor-pointer">
               View List
             </div>
           </div>
@@ -244,7 +244,7 @@ const Dashboard = () => {
                 <h4 className="font-bold text-3xl">2</h4>
               </div>
             </div>
-            <div className="py-1 px-2 text-secondary-600 bg-secondary-100 w-fit text-sm rounded-lg">
+            <div className="py-1 px-2 text-secondary-600 bg-secondary-100 w-fit text-sm rounded-lg cursor-pointer">
               View List
             </div>
           </div>
@@ -260,7 +260,7 @@ const Dashboard = () => {
                 <h4 className="font-bold text-3xl">0</h4>
               </div>
             </div>
-            <div className="py-1 px-2 text-secondary-600 bg-secondary-100 w-fit text-sm rounded-lg">
+            <div className="py-1 px-2 text-secondary-600 bg-secondary-100 w-fit text-sm rounded-lg cursor-pointer">
               View List
             </div>
           </div>
@@ -277,7 +277,7 @@ const Dashboard = () => {
                 <h4 className="font-bold text-3xl">0</h4>
               </div>
             </div>
-            <div className="py-1 px-2 text-secondary-600 bg-secondary-100 w-fit text-sm rounded-lg">
+            <div className="py-1 px-2 text-secondary-600 bg-secondary-100 w-fit text-sm rounded-lg cursor-pointer">
               View List
             </div>
           </div>
