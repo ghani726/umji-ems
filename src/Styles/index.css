@@ -91,7 +91,7 @@
   background: var(--color-secondary-100);
   width: 100%;
   min-height: 100dvh;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .input-box {
