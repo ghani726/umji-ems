@@ -1,7 +1,7 @@
 
 const Pricing = () => {
   return (
-    <div>Pricing</div>
+    <div className="min-h-[calc(100dvh-650px-3.5rem)] lg:min-h-[calc(100dvh-298px-3.5rem)]">Pricing</div>
   )
 }
 
