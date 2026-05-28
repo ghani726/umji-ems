@@ -14,10 +14,11 @@ import {
 } from "lucide-react";
 import { useContext } from "react";
 import Auth from "../../contexts/Auth";
+import Data from "../../contexts/Data";
 
-const AdminDashboard = () => {
+const AdminDashboard = ({data}) => {
   return (
-    <section className="flex flex-col gap-4 p-6 px-8 h-[calc(100dvh-3.5rem)] overflow-y-auto w-full">
+    <section className={`flex flex-col gap-4 p-6 px-8 ${data.mobile?"h-[calc(100dvh-7.5rem)]":"h-[calc(100dvh-3.5rem)]"} overflow-y-auto w-full`}>
       <div className="flex flex-col">
         <h1 className="text-2xl font-bold text-secondary-950">
           Welcome, Admin
@@ -172,9 +173,9 @@ const AdminDashboard = () => {
   );
 };
 
-const EmployeeDashboard = () => {
+const EmployeeDashboard = ({data}) => {
   return (
-    <section className="flex flex-col gap-4 p-6 px-8 h-[calc(100dvh-3.5rem)] overflow-y-auto w-full">
+    <section className={`flex flex-col gap-4 p-6 px-8 ${data.mobile?"h-[calc(100dvh-7.5rem)]":"h-[calc(100dvh-3.5rem)]"} overflow-y-auto w-full`}>
       <div className="flex flex-col">
         <h1 className="text-2xl font-bold text-secondary-950">
           Welcome, Employee
@@ -289,14 +290,14 @@ const EmployeeDashboard = () => {
 };
 
 const Dashboard = () => {
-  const data = useContext(Auth);
-
+  const auth = useContext(Auth);
+  const data = useContext(Data)
   return (
     <>
-      {data.isAdmin ? (
-        <AdminDashboard></AdminDashboard>
+      {auth.isAdmin ? (
+        <AdminDashboard data={data}></AdminDashboard>
       ) : (
-        <EmployeeDashboard></EmployeeDashboard>
+        <EmployeeDashboard data={data}></EmployeeDashboard>
       )}
     </>
   );

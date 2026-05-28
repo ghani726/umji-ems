@@ -93,12 +93,12 @@ const AdminSideBar = ({hide}) => {
         </p>
       </Link>
       <Link
-        to="/app/announcements"
-        className={`p-2.5 ${hide ? "px-2.5 justify-center" : "px-4 justify-start"} flex items-center gap-3  rounded-xl cursor-pointer ${location.pathname === "/app/announcements" ? "bg-primary-600 text-white hover:bg-primary-700 hover:shadow-[0_0_10px_rgba(0,0,0,0.3)]" : "bg-transparent text-black hover:bg-secondary-100"}`}
+        to="/app/alerts"
+        className={`p-2.5 ${hide ? "px-2.5 justify-center" : "px-4 justify-start"} flex items-center gap-3  rounded-xl cursor-pointer ${location.pathname === "/app/alerts" ? "bg-primary-600 text-white hover:bg-primary-700 hover:shadow-[0_0_10px_rgba(0,0,0,0.3)]" : "bg-transparent text-black hover:bg-secondary-100"}`}
       >
         <Megaphone className="h-5 w-5 shrink-0" size={20}></Megaphone>
         <p className={`font-semibold text-sm ${hide ? "hidden" : "flex"}`}>
-          Announcements
+          Alerts
         </p>
       </Link>
     </aside>
@@ -154,12 +154,12 @@ const EmployeeSideBar = ({hide}) => {
         </p>
       </Link>
       <Link
-        to="/app/announcements"
-        className={`p-2.5 ${hide ? "px-2.5 justify-center" : "px-4 justify-start"} flex items-center gap-3  rounded-xl cursor-pointer ${location.pathname === "/app/announcements" ? "bg-primary-600 text-white hover:bg-primary-700 hover:shadow-[0_0_10px_rgba(0,0,0,0.3)]" : "bg-transparent text-black hover:bg-secondary-100"}`}
+        to="/app/alerts"
+        className={`p-2.5 ${hide ? "px-2.5 justify-center" : "px-4 justify-start"} flex items-center gap-3  rounded-xl cursor-pointer ${location.pathname === "/app/alerts" ? "bg-primary-600 text-white hover:bg-primary-700 hover:shadow-[0_0_10px_rgba(0,0,0,0.3)]" : "bg-transparent text-black hover:bg-secondary-100"}`}
       >
         <Megaphone className="h-5 w-5 shrink-0" size={20}></Megaphone>
         <p className={`font-semibold text-sm ${hide ? "hidden" : "flex"}`}>
-          Announcements
+          Alerts
         </p>
       </Link>
     </aside>

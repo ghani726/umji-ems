@@ -12,7 +12,7 @@ const AuthContext = ({ children }) => {
   const [password, setPassword] = useState("");
   const [passwordHidden, setPasswordHidden] = useState(true);
 
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(true);
   return (
     <Auth.Provider
       value={{
