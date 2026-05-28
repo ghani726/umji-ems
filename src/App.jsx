@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import LoginPage from "./pages/login";
+import LoginPage from "./pages/Login";
 import Main from "./pages/Website/Main";
 import WebApp from "./pages/App/WebApp";
 const App = () => {
