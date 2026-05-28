@@ -20,7 +20,7 @@ const WebApp = () => {
         <main className={`flex flex-col md:flex-row w-full h-auto overflow-hidden`}>
           <SideBar hide={hide} setHide={setHide} className={`transition-all duration-300 ease-in-out`}></SideBar>
           
-          <section className="flex w-full h-[calc(100dvh-7.5rem)] md:h-[calc(100dvh-3.5rem)] overflow-hidden">
+          <section className={`flex flex-col gap-4 p-6 px-8 h-[calc(100dvh-7.5rem)] md:h-[calc(100dvh-3.5rem)] overflow-y-auto w-full`}>
             <Routes>
               <Route path="" element={<Dashboard></Dashboard>}></Route>
               <Route path="/tasks" element={<Tasks></Tasks>}></Route>

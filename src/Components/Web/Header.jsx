@@ -1,39 +1,16 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { DollarSign, HomeIcon, MenuIcon, Phone, X } from "lucide-react";
-import Data from "../../contexts/Data";
+
 import { Link } from "react-router-dom";
 
 const Header = () => {
-  const data = useContext(Data);
 
   //The minimum size, just to hide the buttons (Login, Register)
 
-  const [min, setMin] = useState(false);
 
   //The small modal, to sow nav when on small screen
   const [showNav, setShowNav] = useState(false);
 
-  //Responsive Ness of Header
-  const displayCheck = () => {
-    if (window.innerWidth <= 620) {
-      data.setMobile(true);
-    } else if (window.innerWidth > 620) {
-      data.setMobile(false);
-      setShowNav(false)
-    }
-    if (window.innerWidth <= 420) {
-      setMin(true);
-    } else if (window.innerWidth > 420) {
-      setMin(false);
-    }
-  };
-
-  //On page resize (Responsiveness)
-  window.addEventListener("resize", displayCheck);
-
-  //On page reload (Responsiveness)
-  window.addEventListener("load", displayCheck);
-  window.addEventListener("DOMContentLoaded", displayCheck);
 
   return (
     <header className="flex sticky justify-between top-0 shadow-[0_0_10px_rgba(0,0,0,0.3)] items-center h-14 w-full bg-white px-8 duration-300 ease-in-out transition-all">
@@ -43,8 +20,7 @@ const Header = () => {
       </h1>
       {/* Navbar (Desktop) */}
       <nav
-        style={{ display: data.mobile ? "none" : "flex" }}
-        className="flex justify-between items-center gap-8 duration-300 ease-in-out transition-all"
+        className={`hidden md:flex justify-between items-center gap-8 duration-300 ease-in-out transition-all`}
       >
         <Link to="/" className="cursor-pointer">
           Home
@@ -59,24 +35,21 @@ const Header = () => {
       {/* Buttons */}
       <div className="flex justify-between items-center gap-2">
         <button
-          style={{ display: min ? "none" : "flex" }}
-          className=" px-4 py-1.5 cursor-pointer rounded-xl"
+          className={`hidden sm:flex px-4 py-1.5 cursor-pointer rounded-xl`}
         >
           <Link to="/login">Login</Link>
         </button>
         <button
-          style={{ display: min ? "none" : "flex" }}
-          className="bg-primary-600 hover:bg-primary-700 cursor-pointer text-white px-4 py-1.5 rounded-xl"
+          className={`hidden sm:flex bg-primary-600 hover:bg-primary-700 cursor-pointer text-white px-4 py-1.5 rounded-xl`}
         >
           <Link to="/register">Register</Link>
         </button>
 
         {/* Menu, Mobile Screen */}
         <div
-          style={{ display: data.mobile ? "flex" : "none" }}
-          className="ml-4 duration-300 ease-in-out cursor-pointer animate-fade-in transition-all active:scale-95"
+          className={`flex md:hidden ml-4 duration-300 ease-in-out cursor-pointer animate-fade-in transition-all active:scale-95`}
           onClick={() => {
-            showNav ? setShowNav(false) : setShowNav(true);
+            showNav?setShowNav(false):setShowNav(true);
             // data.mobile?setShowNav(true):setShowNav(false);
           }}
         >
@@ -89,7 +62,7 @@ const Header = () => {
       </div>
       {/* The mobile nav modal */}
       <div
-        style={{ display: showNav&&data.mobile ? "flex" : "none" }}
+        style={{ display: showNav ? "flex" : "none" }}
         className="menu z-10 flex flex-col items-start justify-center animate-slide-in-down p-2 bg-white absolute right-4 top-14.5 gap-2 rounded-xl shadow-[0_0_10px_rgba(0,0,0,0.3)] "
       >
         <Link

@@ -17,7 +17,7 @@ import Auth from "../../contexts/Auth";
 
 const AdminDashboard = () => {
   return (
-    <section className={`flex flex-col gap-4 p-6 px-8 h-[calc(100dvh-7.5rem)] md:h-[calc(100dvh-3.5rem)] overflow-y-auto w-full`}>
+    <>
       <div className="flex flex-col">
         <h1 className="text-2xl font-bold text-secondary-950">
           Welcome, Admin
@@ -168,13 +168,13 @@ const AdminDashboard = () => {
           </div>
         </div>
       </div>
-    </section>
+    </>
   );
 };
 
 const EmployeeDashboard = () => {
   return (
-    <section className={`flex flex-col gap-4 p-6 px-8 h-[calc(100dvh-7.5rem)] md:h-[calc(100dvh-3.5rem)] overflow-y-auto w-full`}>
+    <>
       <div className="flex flex-col">
         <h1 className="text-2xl font-bold text-secondary-950">
           Welcome, Employee
@@ -284,7 +284,7 @@ const EmployeeDashboard = () => {
           </div>
         </div>
       </div>
-    </section>
+    </>
   );
 };
 
