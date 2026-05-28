@@ -12,8 +12,8 @@ import {
   UserRoundX,
   UsersRound,
 } from "lucide-react";
-
-const isAdmin = true;
+import { useContext } from "react";
+import Auth from "../../contexts/Auth";
 
 const AdminDashboard = () => {
   return (
@@ -169,8 +169,8 @@ const AdminDashboard = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
 const EmployeeDashboard = () => {
   return (
@@ -260,9 +260,7 @@ const EmployeeDashboard = () => {
               <CalendarOff></CalendarOff>
             </div>
             <div>
-              <h4 className="text-gray-500 text-sm">
-                Pending Leave Requests
-              </h4>
+              <h4 className="text-gray-500 text-sm">Pending Leave Requests</h4>
               <h4 className="font-bold text-3xl">0</h4>
             </div>
           </div>
@@ -277,9 +275,7 @@ const EmployeeDashboard = () => {
               <CalendarCheck></CalendarCheck>
             </div>
             <div>
-              <h4 className="text-gray-500 text-sm">
-                Approved Leave Requests
-              </h4>
+              <h4 className="text-gray-500 text-sm">Approved Leave Requests</h4>
               <h4 className="font-bold text-3xl">0</h4>
             </div>
           </div>
@@ -289,20 +285,19 @@ const EmployeeDashboard = () => {
         </div>
       </div>
     </section>
-  )
-}
-
-
+  );
+};
 
 const Dashboard = () => {
-
-  
+  const data = useContext(Auth);
 
   return (
     <>
-    {isAdmin?<AdminDashboard></AdminDashboard>:<EmployeeDashboard></EmployeeDashboard>}
-      
-      
+      {data.isAdmin ? (
+        <AdminDashboard></AdminDashboard>
+      ) : (
+        <EmployeeDashboard></EmployeeDashboard>
+      )}
     </>
   );
 };
