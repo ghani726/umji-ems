@@ -34,7 +34,7 @@ const WebApp = () => {
     <>
         <Header hide={hide} setHide={setHide}></Header>
         <main className={`flex ${data.mobile?"flex-col":"flex-row"} w-full h-auto overflow-hidden`}>
-          <SideBar hide={hide} setHide={setHide}></SideBar>
+          <SideBar hide={hide} setHide={setHide} className={`transition-all duration-300 ease-in-out`}></SideBar>
           
           <section className="flex w-full h-full overflow-hidden">
             <Routes>

@@ -89,7 +89,7 @@ const Header = () => {
       {/* The mobile nav modal */}
       <div
         style={{ display: showNav&&data.mobile ? "flex" : "none" }}
-        className="menu z-10 flex flex-col items-start justify-center p-2 bg-white absolute right-4 top-14.5 gap-2 rounded-xl shadow-[0_0_10px_rgba(0,0,0,0.3)] "
+        className="menu z-10 flex flex-col items-start justify-center animate-slide-in-down p-2 bg-white absolute right-4 top-14.5 gap-2 rounded-xl shadow-[0_0_10px_rgba(0,0,0,0.3)] "
       >
         <Link
           to="/"

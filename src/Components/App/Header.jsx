@@ -12,7 +12,7 @@ const Header = ({ hide, setHide }) => {
          className={`${data.mobile?"hidden":"flex"} p-2.5 cursor-pointer rounded-xl`}
          onClick={()=>[
             hide?setHide(false):setHide(true)
-        ]}>{hide?<SidebarOpen></SidebarOpen>:<SidebarClose></SidebarClose>}</span>
+        ]}>{hide?<SidebarOpen className="animate-fade-in"></SidebarOpen>:<SidebarClose className="animate-fade-in"></SidebarClose>}</span>
         <h1 className="text-2xl cursor-pointer font-bold text-primary-700">
           UMJI EMS
         </h1>
