@@ -28,6 +28,7 @@ const WebApp = () => {
 
   //On page reload (Responsiveness)
   window.addEventListener("load", displayCheck);
+  window.addEventListener("DOMContentLoaded", displayCheck);
   const data = useContext(Data);
 
   return (

@@ -228,6 +228,8 @@ const NavBar = () => {
 
   //On page reload (Responsiveness)
   window.addEventListener("load", displayCheck);
+  window.addEventListener("DOMContentLoaded", displayCheck);
+
   const data = useContext(Data);
   const newData = useContext(Auth);
   return (
