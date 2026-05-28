@@ -1,17 +1,16 @@
 import { useContext } from "react";
 import Auth from "../../contexts/Auth";
-import Data from "../../contexts/Data";
 
-const AdminTasks = ({data}) => {
+const AdminTasks = () => {
   return (
-    <section className={`flex flex-col gap-4 p-6 px-8 ${data.mobile?"h-[calc(100dvh-7.5rem)]":"h-[calc(100dvh-3.5rem)]"} overflow-y-auto w-full`}>
+    <section className={`flex flex-col gap-4 p-6 px-8 h-[calc(100dvh-7.5rem)] md:h-[calc(100dvh-3.5rem)] overflow-y-auto w-full`}>
       Tasks, Admin
     </section>
   )
 }
-const EmployeeTasks = ({data}) => {
+const EmployeeTasks = () => {
   return (
-    <section className={`flex flex-col gap-4 p-6 px-8 ${data.mobile?"h-[calc(100dvh-7.5rem)]":"h-[calc(100dvh-3.5rem)]"} overflow-y-auto w-full`}>
+    <section className={`flex flex-col gap-4 p-6 px-8 h-[calc(100dvh-7.5rem)] md:h-[calc(100dvh-3.5rem)] overflow-y-auto w-full`}>
       Tasks, Employee
     </section>
   )
@@ -19,13 +18,12 @@ const EmployeeTasks = ({data}) => {
 
 const Tasks = () => {
   const auth = useContext(Auth);
-  const data = useContext(Data)
   return (
     <>
       {auth.isAdmin ? (
-        <AdminTasks data={data}></AdminTasks>
+        <AdminTasks></AdminTasks>
       ) : (
-        <EmployeeTasks data={data}></EmployeeTasks>
+        <EmployeeTasks></EmployeeTasks>
       )}
     </>
   );

@@ -11,7 +11,7 @@ import {
   X,
 } from "lucide-react";
 import { useContext, useState } from "react";
-import Data from "../../contexts/Data";
+
 import { Link, useLocation } from "react-router-dom";
 import Auth from "../../contexts/Auth";
 
@@ -19,14 +19,13 @@ import Auth from "../../contexts/Auth";
 
 const AdminNavBar = () => {
   const location = useLocation();
-  const data = useContext(Data);
 
   const [showNavMenu, setShowNavMenu] = useState(false);
 
   return (
     <>
       <nav
-        className={`flex ${data.mobile ? "flex" : "hidden"} justify-around items-center border-t border-t-secondary-300 gap-4 px-2.5 h-16 bg-white`}
+        className={`flex md:hidden justify-around items-center border-t border-t-secondary-300 gap-4 px-2.5 h-16 bg-white`}
       >
         <Link
           to="/app"
@@ -154,10 +153,9 @@ const AdminNavBar = () => {
 
 const EmployeeNavBar = () => {
   const location = useLocation();
-  const data = useContext(Data);
   return (
     <nav
-      className={`flex ${data.mobile ? "flex" : "hidden"} gap-4 h-16 items-center justify-around px-2.5 border-t border-t-secondary-300 bg-white`}
+      className={`flex md:hidden gap-4 h-16 items-center justify-around px-2.5 border-t border-t-secondary-300 bg-white`}
     >
       <Link
         to="/app"
@@ -214,23 +212,6 @@ const EmployeeNavBar = () => {
   );
 };
 const NavBar = () => {
-  //Responsive Ness of Header
-  const displayCheck = () => {
-    if (window.innerWidth <= 620) {
-      data.setMobile(true);
-    } else if (window.innerWidth > 620) {
-      data.setMobile(false);
-    }
-  };
-
-  //On page resize (Responsiveness)
-  window.addEventListener("resize", displayCheck);
-
-  //On page reload (Responsiveness)
-  window.addEventListener("load", displayCheck);
-  window.addEventListener("DOMContentLoaded", displayCheck);
-
-  const data = useContext(Data);
   const newData = useContext(Auth);
   return (
     <>

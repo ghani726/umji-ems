@@ -9,7 +9,6 @@ import {
   ClipboardList,
 } from "lucide-react";
 import { useContext } from "react";
-import Data from "../../contexts/Data";
 import { Link, useLocation } from "react-router-dom";
 import Auth from "../../contexts/Auth";
 
@@ -21,10 +20,9 @@ import Auth from "../../contexts/Auth";
 
 const AdminSideBar = ({hide}) => {
   const location = useLocation();
-  const data = useContext(Data);
   return (
     <aside
-      className={`flex ${data.mobile ? "hidden" : "flex"} flex-col p-4 gap-4 ${hide ? "min-w-20" : "min-w-64"} h-[calc(100dvh-3.5rem)] bg-white border-r border-secondary-300 `}
+      className={`hidden md:flex flex-col p-4 gap-4 ${hide ? "min-w-20" : "min-w-64"} h-[calc(100dvh-3.5rem)] bg-white border-r border-secondary-300 `}
     >
       <Link
         to="/app"
@@ -109,10 +107,9 @@ const AdminSideBar = ({hide}) => {
 
 const EmployeeSideBar = ({hide}) => {
   const location = useLocation();
-  const data = useContext(Data);
   return (
     <aside
-      className={`flex ${data.mobile ? "hidden" : "flex"} flex-col p-4 gap-4 ${hide ? "min-w-20" : "min-w-64"} h-[calc(100dvh-3.5rem)] bg-white border-r border-secondary-300 `}
+      className={`hidden md:flex flex-col p-4 gap-4 ${hide ? "min-w-20" : "min-w-64"} h-[calc(100dvh-3.5rem)] bg-white border-r border-secondary-300 `}
     >
       <Link
         to="/app"
@@ -167,23 +164,6 @@ const EmployeeSideBar = ({hide}) => {
 }
 
 const SideBar = ({ hide }) => {
-  //Responsive Ness of Header
-  const displayCheck = () => {
-    if (window.innerWidth <= 620) {
-      data.setMobile(true);
-    } else if (window.innerWidth > 620) {
-      data.setMobile(false);
-    }
-  };
-
-  //On page resize (Responsiveness)
-  window.addEventListener("resize", displayCheck);
-
-  //On page reload (Responsiveness)
-  window.addEventListener("load", displayCheck);
-  window.addEventListener("DOMContentLoaded", displayCheck);
-
-  const data = useContext(Data);
   const newData = useContext(Auth)
 
   return (
