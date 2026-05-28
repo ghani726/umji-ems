@@ -32,7 +32,7 @@ const LoginPage = () => {
   }
   
   return (
-    <div className="bg-white h-auto min-w-80 p-8 rounded-3xl absolute top-1/2 left-1/2 -translate-1/2 flex flex-col justify-center items-center gap-6">
+    <div className="bg-white h-auto min-w-80 p-6 md:p-8 rounded-3xl absolute top-1/2 left-1/2 -translate-1/2 flex flex-col justify-center items-center gap-6">
       <div className="flex flex-col justify-center items-center gap-2">
         <h1 className="text-3xl font-bold text-primary-700">UMJI EMS</h1>
         <h4 className="font-normal text-sm text-secondary-600">
