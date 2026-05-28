@@ -11,7 +11,7 @@ const Home = () => {
         </div>
         <p className="text-secondary-700  max-w-200 text-left xs:text-center">The all-in-one platform to streamline your processes, from payroll and attendance to leave management and announcements. Empower your workforce and simplify your administration.</p>
         <div className="flex justify-between sm:justify-start items-center gap-4">
-          <Link className=" py-2 sm:py-4 px-4 sm:px-8 bg-primary-700 rounded-xl font-semibold text-white">Get Started</Link>
+          <Link to="/register" className=" py-2 sm:py-4 px-4 sm:px-8 bg-primary-700 rounded-xl font-semibold text-white">Get Started</Link>
           <Link to="/login" className=" py-2 sm:py-4 px-4 sm:px-8 bg-primary-200 rounded-xl font-semibold text-primary-700 ">Login</Link>
         </div>
       </section>

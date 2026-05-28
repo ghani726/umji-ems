@@ -13,6 +13,11 @@ const AuthContext = ({ children }) => {
   const [passwordHidden, setPasswordHidden] = useState(true);
 
   const [isAdmin, setIsAdmin] = useState(true);
+
+
+
+  //Registration Page, 0 for Employee, 1 for Company.
+  const [activeTab, setActiveTab] = useState(0);
   return (
     <Auth.Provider
       value={{
@@ -27,6 +32,8 @@ const AuthContext = ({ children }) => {
         passwordReg,
         isAdmin,
         setIsAdmin,
+        activeTab,
+        setActiveTab
       }}
     >
       {children}

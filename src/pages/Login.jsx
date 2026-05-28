@@ -2,6 +2,7 @@ import { Eye, EyeOff } from "lucide-react";
 import { useContext } from "react";
 import Auth from "../contexts/Auth";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 const LoginPage = () => {
   const data = useContext(Auth);
@@ -32,7 +33,7 @@ const LoginPage = () => {
   }
   
   return (
-    <div className="bg-white h-auto min-w-80 p-6 md:p-8 rounded-3xl absolute top-1/2 left-1/2 -translate-1/2 flex flex-col justify-center items-center gap-6">
+    <div className="bg-white transition-all duration-500 ease-in-out h-auto min-w-80 w-auto ms:min-w-md lg:w p-6 md:p-8 rounded-3xl absolute top-1/2 left-1/2 -translate-1/2 flex flex-col justify-center items-center gap-6">
       <div className="flex flex-col justify-center items-center gap-2">
         <h1 className="text-3xl font-bold text-primary-700">UMJI EMS</h1>
         <h4 className="font-normal text-sm text-secondary-600">
@@ -79,9 +80,9 @@ const LoginPage = () => {
         <div className="flex justify-center items-center text-sm text-secondary-600">
           <p>First time setup?</p>
           <pre> </pre>
-          <strong className="text-primary-700 font-semibold">
+          <Link to="/register" className="text-primary-700 font-semibold">
             Register New Account
-          </strong>
+          </Link>
         </div>
       </div>
     </div>
