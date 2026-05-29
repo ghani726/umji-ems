@@ -214,3 +214,6 @@ input:-webkit-autofill ~ label {
     --color-gray-500
   ); /* Subdued grey when data exists but user clicked away */
 }
+input:autofill {
+  background-color: var(--color-secondary-100);
+}

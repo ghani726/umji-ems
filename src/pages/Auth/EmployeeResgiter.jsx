@@ -1,11 +1,8 @@
 import { ArrowRight, BriefcaseBusiness, Eye, EyeOff, UserRound } from 'lucide-react';
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import Auth from '../../contexts/Auth';
-
-
-
 
 const PersonalDetails = (props) => {
 
@@ -15,13 +12,56 @@ const PersonalDetails = (props) => {
 
     const data = useContext(Auth);
 
-
     //Regexes
 
-    const fullName = /^.{4,30}$/s;
-    const email = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-    const userNameReg = /^(?!.*\.\.)(?!.*\_\_)[a-z0-9._]{4,16}$/i;
+    const fullName = /^.{4,30}$/s;  
+    const email = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;  
+    const userNameReg = /^(?!.*\.\.)(?!.*\_\_)[a-z0-9._]{4,16}$/i; //eslint-disable-line
+    const passwordReg = /^[a-zA-Z0-9_\-.@!#$]{4,16}$/;  
 
+    const checkValues = () => {
+        props.setFirstCompleted(true)
+
+        if(!fullName.test((props.nameE))) {
+            toast.error("Name must be between 4 and 30 characters long.");
+            props.setFirstCompleted(false)
+        }
+        if(!email.test((props.emailE))){ 
+            toast.error("Please enter a valid email address.");
+            props.setFirstCompleted(false)
+        }
+        if(!userNameReg.test((props.userNameE))) {
+            toast.error(
+                <div>
+                    Username rules:
+                    <ul style={{ margin: "4px 0 0 16px", padding: 0 }}>
+                        <li>4 to 16 characters (letters, numbers, periods, underscores)</li>
+                        <li>No consecutive periods (..) or underscores (__)</li>
+                    </ul>
+                </div>
+            );
+            props.setFirstCompleted(false)
+        }
+        if(!passwordReg.test(props.passwordE)){
+            toast.error("Password must be 4 to 16 characters long and use valid symbols (_-.@!#$).");
+            props.setFirstCompleted(false)
+        }
+        if(props.passwordE!==props.confirmPasswordE){
+            toast.error("Passwords don't match.");
+            props.setFirstCompleted(false)
+        }
+        props.setNext(false)
+    }
+    
+    // ✅ ADD THIS TO RUN CODE AFTER RENDER, NOT DURING
+    useEffect(() => {
+        if (props.next) {
+            toast.dismiss(); // Clears old toast notifications instantly
+            checkValues();
+        }
+    }, [props.next]); // ⚡ ONLY runs when the "Next" button sets this to true
+
+    
 
     return (
         <>
@@ -57,7 +97,7 @@ const PersonalDetails = (props) => {
                     placeholder=" "
                     onChange={(e) => {
                         setDate(e.target.value)
-                        props.setBirthdayE(date)
+                        props.setBirthdayE(e.target.value)
                     }}
                 />
                 <label htmlFor="userName">Birthday</label>
@@ -96,7 +136,7 @@ const PersonalDetails = (props) => {
                     type={data.passwordHidden? "password": "text"}
                     className="outline-none"
                     placeholder=" "
-                    value={props.confirmPassworE}
+                    value={props.confirmPasswordE}
                         onChange={(e) => {
                     props.setConfirmPasswordE(e.target.value);
                     }}
@@ -113,8 +153,8 @@ const PersonalDetails = (props) => {
 }
 
 const ProffesionalDetails = (props) => {
-    const data = useContext(Auth);
-
+    const companyIDReg = /^(?!.*\.\.)(?!.*\_\_)[a-z0-9._]{4,16}$/i; //eslint-disable-line
+    const experienceNsalaryReg = /^[0-9]+$/; //eslint-disable-line
     return (
         <>
             <div className="input-box text-lg w-full bg-gray-100 rounded-2xl px-4">
@@ -149,10 +189,6 @@ const ProffesionalDetails = (props) => {
                 </select>
                 <label htmlFor="userName">Department</label>
             </div>
-            
-            
-            
-            
             <div className="input-box text-lg w-full bg-gray-100 rounded-2xl px-4">
                 <input
                     type="text"
@@ -200,6 +236,37 @@ const EmployeeRegister = (props) =>{
 
     const navigate = useNavigate()
 
+
+    const [firstCompleted, setFirstCompleted] = useState(false)
+    const [secondCompleted, setSecondCompleted] = useState(false)
+
+
+    //For Checking whether to go next.
+
+    const [next, setNext] = useState(false)
+
+
+    // to check wheter are all of them true
+
+
+    
+    // const [allowNext, setAllowNext] = useState(false)
+    // const [allowComplted, setAllowComplted] = useState(false)
+
+    // const complete = ()=> {
+    //     if(allowNext){
+    //         step<1?setStep(step+1):(
+    //             toast.success("Account created succesfully.", {
+    //                 iconTheme: {
+    //                     primary:"#5d2bff"
+    //                 }
+    //             }),
+    //             navigate("/login",{replace:true})
+    //         );
+    //     }
+        
+    // }
+
     return (
         <>
         <div className="flex flex-col gap-6 w-full">
@@ -218,22 +285,15 @@ const EmployeeRegister = (props) =>{
                         <p className='text-xs'>Professional Details</p>
                     </div>
                 </div>
-                {step?<ProffesionalDetails props={props.data}></ProffesionalDetails>:<PersonalDetails props={props.data}></PersonalDetails>}
+                {step?<ProffesionalDetails {...props} next={next} setNext={setNext} step={step} setStep={setStep} secondCompleted={secondCompleted} setSecondCompleted={setSecondCompleted}></ProffesionalDetails>:<PersonalDetails {...props} next={next} setNext={setNext} step={step} setStep={setStep} firstCompleted={firstCompleted} setFirstCompleted={setFirstCompleted}></PersonalDetails>}
                 <hr className='h-px rounded-full bg-secondary-300 w-full outline-none border-none' />
                 <div className='flex justify-between items-center'>
                     <button onClick={()=>{
                         {step>0?setStep(step-1):""}
                     }} disabled={step?false:true} className={`py-2 sm:py-3 px-4 sm:px-6 bg-secondary-100 hover:bg-secondary-200 rounded-xl text-black cursor-pointer disabled:cursor-not-allowed disabled:text-secondary-500`}>Back</button>
                     <button onClick={()=>{
-                        {step<1?setStep(step+1):(
-                            toast.success("Account created succesfully.", {
-                                iconTheme: {
-                                    primary:"#5d2bff"
-                                }
-                            }),
-                            navigate("/login",{replace:true})
-                        );
-                        }
+                        setNext(true)
+                        firstCompleted?(setStep(step+1)):""
                     }} className={`py-2 sm:py-3 px-4 sm:px-6 bg-primary-600 hover:bg-primary-700 rounded-xl text-white flex gap-1 cursor-pointer`}>{step===1?"Complete Setup":(<>Next <ArrowRight /></>)}</button>
                 </div>
             </div>
