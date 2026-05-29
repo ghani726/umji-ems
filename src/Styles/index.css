@@ -136,9 +136,9 @@
   background-color: var(--color-secondary-100);
   font-size: 1rem;
 }
-.input-box > input {
+.input-box > input, .input-box > select {
   position: absolute;
-  width: 90%;
+  width: 95%;
   height: 100%;
 }
 .input-box-p > input {
@@ -168,6 +168,15 @@ input:-webkit-autofill ~ label {
   color: var(--color-primary-600);
   font-weight: 600;
 }
+.input-box>select:focus + label,
+.input-box>select:not(:placeholder-shown) + label,
+select:-webkit-autofill ~ label {
+  top: -2%;
+  font-size: 12px;
+  background: linear-gradient(var(--color-white), var(--color-secondary-100));
+  color: var(--color-primary-600);
+  font-weight: 600;
+}
 
 .input-box-p>input:focus + label,
 .input-box-p>input:not(:placeholder-shown) + label,
@@ -183,7 +192,7 @@ input:-webkit-autofill ~ label {
   border: 2px solid var(--color-primary-600);
 }
 
-.input-box>input:focus ~ label, .input-box-p>input:focus ~ label  {
+.input-box>input:focus ~ label, .input-box-p>input:focus ~ label, .input-box>select:focus ~ label  {
   color: var(
     --color-primary-600
   ); /* Label text becomes blue ONLY when actively typing */
@@ -191,6 +200,11 @@ input:-webkit-autofill ~ label {
 
 /* 5. Filled-But-Not-Focused Specific Colors */
 .input-box input:not(:placeholder-shown):not(:focus) ~ label {
+  color: var(
+    --color-gray-500
+  ); /* Subdued grey when data exists but user clicked away */
+}
+.input-box select:not(:placeholder-shown):not(:focus) ~ label {
   color: var(
     --color-gray-500
   ); /* Subdued grey when data exists but user clicked away */

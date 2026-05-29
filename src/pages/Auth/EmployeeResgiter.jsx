@@ -1,14 +1,27 @@
 import { ArrowRight, BriefcaseBusiness, Eye, EyeOff, UserRound } from 'lucide-react';
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
+import Auth from '../../contexts/Auth';
 
 
 
 
-const PersonalDetails = ({data}) => {
+const PersonalDetails = (props) => {
 
     const today = new Date().toISOString().split('T')[0];
 
     const [date, setDate] = useState(today);
+
+    const data = useContext(Auth);
+
+
+    //Regexes
+
+    const fullName = /^.{4,30}$/s;
+    const email = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    const userNameReg = /^(?!.*\.\.)(?!.*\_\_)[a-z0-9._]{4,16}$/i;
+
 
     return (
         <>
@@ -17,9 +30,9 @@ const PersonalDetails = ({data}) => {
                     type="text"
                     className="outline-none"
                     placeholder=" "
-                    value={data.userName}
+                    value={props.nameE}
                     onChange={(e) => {
-                    data.setUserName(e.target.value);
+                    props.setNameE(e.target.value);
                     }}
                 />
                 <label htmlFor="userName">Full Name</label>
@@ -29,9 +42,9 @@ const PersonalDetails = ({data}) => {
                     type="text"
                     className="outline-none"
                     placeholder=" "
-                    value={data.userName}
+                    value={props.emailE}
                     onChange={(e) => {
-                    data.setUserName(e.target.value);
+                    props.setEmailE(e.target.value);
                     }}
                 />
                 <label htmlFor="userName">Email</label>
@@ -42,7 +55,10 @@ const PersonalDetails = ({data}) => {
                     value={date}
                     className="outline-none"
                     placeholder=" "
-                    onChange={(e) => setDate(e.target.value)}
+                    onChange={(e) => {
+                        setDate(e.target.value)
+                        props.setBirthdayE(date)
+                    }}
                 />
                 <label htmlFor="userName">Birthday</label>
             </div>
@@ -51,9 +67,9 @@ const PersonalDetails = ({data}) => {
                     type="text"
                     className="outline-none"
                     placeholder=" "
-                    value={data.userName}
+                    value={props.userNameE}
                     onChange={(e) => {
-                    data.setUserName(e.target.value);
+                    props.setUserNameE(e.target.value);
                     }}
                 />
                 <label htmlFor="userName">Username</label>
@@ -63,14 +79,14 @@ const PersonalDetails = ({data}) => {
                     type={data.passwordHidden? "password": "text"}
                     className="outline-none"
                     placeholder=" "
-                    value={data.password}
-                    onChange={(e) => {
-                    data.setPassword(e.target.value);
+                    value={props.passwordE}
+                        onChange={(e) => {
+                    props.setPasswordE(e.target.value);
                     }}
                 />
                 <label htmlFor="userName">Password</label>
                 <div className="absolute right-4 top-1/2 -translate-y-1/2 text-secondary-400" onClick={()=>{
-                    data.passwordHidden? data.setPasswordHidden(false): data.setPasswordHidden(true);
+                    data.passwordHidden? props.data.setPasswordHidden(false): props.data.setPasswordHidden(true);
                 }}>
                     {data.passwordHidden? <Eye/> : <EyeOff/>}
                 </div>
@@ -80,14 +96,14 @@ const PersonalDetails = ({data}) => {
                     type={data.passwordHidden? "password": "text"}
                     className="outline-none"
                     placeholder=" "
-                    value={data.password}
-                    onChange={(e) => {
-                    data.setPassword(e.target.value);
+                    value={props.confirmPassworE}
+                        onChange={(e) => {
+                    props.setConfirmPasswordE(e.target.value);
                     }}
                 />
                 <label htmlFor="userName">Confirm Password</label>
                 <div className="absolute right-4 top-1/2 -translate-y-1/2 text-secondary-400" onClick={()=>{
-                    data.passwordHidden? data.setPasswordHidden(false): data.setPasswordHidden(true);
+                    data.passwordHidden? props.data.setPasswordHidden(false): props.data.setPasswordHidden(true);
                 }}>
                     {data.passwordHidden? <Eye/> : <EyeOff/>}
                 </div>
@@ -96,7 +112,9 @@ const PersonalDetails = ({data}) => {
     )
 }
 
-const ProffesionalDetails = ({data}) => {
+const ProffesionalDetails = (props) => {
+    const data = useContext(Auth);
+
     return (
         <>
             <div className="input-box text-lg w-full bg-gray-100 rounded-2xl px-4">
@@ -104,12 +122,32 @@ const ProffesionalDetails = ({data}) => {
                     type="text"
                     className="outline-none"
                     placeholder=" "
-                    value={data.userName}
+                    value={props.companyIDE}
                     onChange={(e) => {
-                    data.setUserName(e.target.value);
+                    props.setCompanyIDE(e.target.value);
                     }}
                 />
                 <label htmlFor="userName">Company ID</label>
+            </div>
+            <div className="input-box text-lg w-full bg-gray-100 rounded-2xl px-4">
+                <select 
+                    name="department" 
+                    id="department" 
+                    className="outline-none"
+                    value={props.departmentE}
+                    onChange={(e) => {
+                        props.setdepartmentE(e.target.value);
+                    }}
+                    required
+                    >
+                    <option value="" disabled defaultValue>Select your department</option>
+                    <option value="sales-development">Sales Development</option>
+                    <option value="frontend">Frontend</option>
+                    <option value="backend">Backend</option>
+                    <option value="marketing">Marketing</option>
+                    <option value="hr">HR</option>
+                </select>
+                <label htmlFor="userName">Department</label>
             </div>
             
             
@@ -120,9 +158,9 @@ const ProffesionalDetails = ({data}) => {
                     type="text"
                     className="outline-none"
                     placeholder=" "
-                    value={data.userName}
+                    value={props.positionE}
                     onChange={(e) => {
-                    data.setUserName(e.target.value);
+                        props.setPositionE(e.target.value);
                     }}
                 />
                 <label htmlFor="userName">Position (Web Developer, etc)</label>
@@ -132,9 +170,9 @@ const ProffesionalDetails = ({data}) => {
                     type="number"
                     className="outline-none"
                     placeholder=" "
-                    value={data.userName}
+                    value={props.experienceE}
                     onChange={(e) => {
-                    data.setUserName(e.target.value);
+                        props.setsxperienceE(e.target.value);
                     }}
                 />
                 <label htmlFor="userName">Experience (Years)</label>
@@ -144,9 +182,9 @@ const ProffesionalDetails = ({data}) => {
                     type="number"
                     className="outline-none"
                     placeholder=" "
-                    value={data.userName}
+                    value={props.salaryE}
                     onChange={(e) => {
-                    data.setUserName(e.target.value);
+                        props.setSalaryE(e.target.value);
                     }}
                 />
                 <label htmlFor="userName">Salary</label>
@@ -156,9 +194,11 @@ const ProffesionalDetails = ({data}) => {
 }
 
 
-const EmployeeRegister = ({data}) =>{
+const EmployeeRegister = (props) =>{
 
     const [step, setStep] = useState(0)
+
+    const navigate = useNavigate()
 
     return (
         <>
@@ -178,11 +218,23 @@ const EmployeeRegister = ({data}) =>{
                         <p className='text-xs'>Professional Details</p>
                     </div>
                 </div>
-                {/* <PersonalDetails data={data}></PersonalDetails> */}
+                {step?<ProffesionalDetails props={props.data}></ProffesionalDetails>:<PersonalDetails props={props.data}></PersonalDetails>}
                 <hr className='h-px rounded-full bg-secondary-300 w-full outline-none border-none' />
                 <div className='flex justify-between items-center'>
-                    <button disabled={step?false:true} className={`py-2 sm:py-3 px-4 sm:px-6 bg-secondary-100 hover:bg-secondary-200 rounded-xl text-black cursor-pointer disabled:cursor-not-allowed disabled:text-secondary-500`}>Back</button>
-                    <button className={`py-2 sm:py-3 px-4 sm:px-6 bg-primary-600 hover:bg-primary-700 rounded-xl text-white flex gap-1 cursor-pointer`}>Next <ArrowRight /></button>
+                    <button onClick={()=>{
+                        {step>0?setStep(step-1):""}
+                    }} disabled={step?false:true} className={`py-2 sm:py-3 px-4 sm:px-6 bg-secondary-100 hover:bg-secondary-200 rounded-xl text-black cursor-pointer disabled:cursor-not-allowed disabled:text-secondary-500`}>Back</button>
+                    <button onClick={()=>{
+                        {step<1?setStep(step+1):(
+                            toast.success("Account created succesfully.", {
+                                iconTheme: {
+                                    primary:"#5d2bff"
+                                }
+                            }),
+                            navigate("/login",{replace:true})
+                        );
+                        }
+                    }} className={`py-2 sm:py-3 px-4 sm:px-6 bg-primary-600 hover:bg-primary-700 rounded-xl text-white flex gap-1 cursor-pointer`}>{step===1?"Complete Setup":(<>Next <ArrowRight /></>)}</button>
                 </div>
             </div>
         </>

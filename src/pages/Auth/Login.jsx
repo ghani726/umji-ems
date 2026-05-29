@@ -9,7 +9,7 @@ const LoginPage = () => {
 
   const check = () =>{
     if(data.userNameReg.test(data.userName)){
-      console.log("true");
+      // console.log("true");
     } else {
       toast.error("Username must be 4 to 16 characters long using letters, numbers, underscores, or periods. Consecutive periods (..) or underscores (__) are not allowed.", {
         iconTheme: {
@@ -17,10 +17,10 @@ const LoginPage = () => {
           secondary: '#FFFAEE',
         },
       });
-      console.log("he");
+      // console.log("he");
     }
     if(data.passwordReg.test(data.password)){
-      console.log("true");
+      // console.log("true");
     } else {
       toast.error("Password must be 4 to 16 characters long and can only include letters, numbers, and basic symbols (_ - . @ ! # $).", {
         iconTheme: {
@@ -28,7 +28,7 @@ const LoginPage = () => {
           secondary: '#FFFAEE',
         },
       });
-      console.log("he");
+      // console.log("he");
     }
   }
   
