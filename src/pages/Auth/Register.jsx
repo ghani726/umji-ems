@@ -143,7 +143,7 @@ const RegisterPage = () => {
     const [confirmPasswordE, setConfirmPasswordE] = useState("")
     const [companyIDE, setCompanyIDE] = useState("")
     const [departmentE, setdepartmentE] = useState("")
-    const [postionE, setPostionE] = useState("")
+    const [positionE, setPositionE] = useState("")
     const [experienceE, setsxperienceE] = useState(0)
     const [salaryE, setSalaryE] = useState(0)
 
@@ -161,7 +161,8 @@ const RegisterPage = () => {
 
     return (
 
-        <div className={`bg-white transition-all duration-500 ease-in-out h-auto min-w-92 ms:min-w-md lg:w p-6 md:p-8 rounded-3xl absolute top-1/2 left-1/2 -translate-1/2 flex flex-col justify-center items-center gap-6 md:w-185 animate-fade-in`}>
+        <div className="flex items-center justify-center min-h-screen bg-secondary-100 p-4 animate-fadeIn">
+            <div className={`bg-white transition-all duration-500 ease-in-out h-auto min-w-92 ms:min-w-md lg:w p-6 md:p-8 rounded-3xl flex flex-col justify-center items-center gap-6 md:w-185 animate-fade-in`}>
             <div className="flex flex-col justify-center items-center gap-2">
                 <h1 className="text-[28px] sm:text-3xl font-bold text-primary-700 text-center">Welcome to UMJI EMS</h1>
                 <h4 className="font-normal text-sm text-secondary-600">
@@ -186,10 +187,12 @@ const RegisterPage = () => {
                     }} className={`z-10 rounded-xl p-2.5 px-4 text-secondary-800 font-semibold text-sm cursor-pointer active:scale-95 animate-fade-in transition-all ease-in-out duration-300`}>Company</div>
             </div>
 
-            {data.activeTab ? <CompanyRegister data={data} nameC={nameC} setNameC={setNameC} companyID={companyID} setCompanyID={setCompanyID} adminNameC={adminNameC} setAdminNameC={setAdminNameC} emailC={emailC} setEmailC={setEmailC} usernameC={usernameC} setusernameC={setusernameC} foundingDateC={foundingDateC} setFoundingDateC={setFoundingDateC} passwordC={passwordC} setPasswordC={setPasswordC} confirmPasswordC={confirmPasswordC} setConfirmPasswordC={setConfirmPasswordC}></CompanyRegister> : <EmployeeRegister data={data} nameE={nameE} setNameE={setNameE} emailE={emailE} setEmailE={setEmailE} birthdayE={birthdayE} setBirthdayE={setBirthdayE} userNameE={userNameE} setUserNameE={setUserNameE} passwordE={passwordE} setPasswordE={setPasswordE} confirmPasswordE={confirmPasswordE} setConfirmPasswordE={setConfirmPasswordE} companyIDE={companyIDE} setCompanyIDE={setCompanyIDE} departmentE={departmentE} setdepartmentE={setdepartmentE} postionE={postionE} setPostionE={setPostionE} experienceE={experienceE} setsxperienceE={setsxperienceE} salaryE={salaryE} setSalaryE={setSalaryE}></EmployeeRegister>}
+            {data.activeTab ? <CompanyRegister data={data} nameC={nameC} setNameC={setNameC} companyID={companyID} setCompanyID={setCompanyID} adminNameC={adminNameC} setAdminNameC={setAdminNameC} emailC={emailC} setEmailC={setEmailC} usernameC={usernameC} setusernameC={setusernameC} foundingDateC={foundingDateC} setFoundingDateC={setFoundingDateC} passwordC={passwordC} setPasswordC={setPasswordC} confirmPasswordC={confirmPasswordC} setConfirmPasswordC={setConfirmPasswordC}></CompanyRegister> : <EmployeeRegister data={data} nameE={nameE} setNameE={setNameE} emailE={emailE} setEmailE={setEmailE} birthdayE={birthdayE} setBirthdayE={setBirthdayE} userNameE={userNameE} setUserNameE={setUserNameE} passwordE={passwordE} setPasswordE={setPasswordE} confirmPasswordE={confirmPasswordE} setConfirmPasswordE={setConfirmPasswordE} companyIDE={companyIDE} setCompanyIDE={setCompanyIDE} departmentE={departmentE} setdepartmentE={setdepartmentE} positionE={positionE} setPositionE={setPositionE} experienceE={experienceE} setsxperienceE={setsxperienceE} salaryE={salaryE} setSalaryE={setSalaryE}></EmployeeRegister>}
 
 
         </div>
+        </div>
+        
     )
 }
 
