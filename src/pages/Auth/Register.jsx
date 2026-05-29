@@ -2,8 +2,8 @@ import { useState } from "react"
 import { Eye, EyeOff } from "lucide-react";
 import { useContext } from "react";
 import Auth from "../../contexts/Auth";
-import toast from "react-hot-toast";
 import EmployeeRegister from "./EmployeeResgiter";
+import CompanyRegister from "./CompanyRegister";
 
 
 
@@ -11,120 +11,125 @@ import EmployeeRegister from "./EmployeeResgiter";
 
 
 
-const CompanyRegister = ({ data }) => {
-    return (
-        <>
-            <div className="inputFeilds w-full grid grid-cols-[repeat(auto-fit,minmax(max(250px,calc(50%-1rem)),1fr))] gap-6">
-                <div className="input-box text-lg w-full bg-gray-100 rounded-2xl px-4">
-                    <input
-                        type="text"
-                        className="outline-none"
-                        placeholder=" "
-                        value={data.userName}
-                        onChange={(e) => {
-                            data.setUserName(e.target.value);
-                        }}
-                    />
-                    <label htmlFor="userName">Company Name</label>
-                </div>
-                <div className="input-box text-lg w-full bg-gray-100 rounded-2xl px-4">
-                    <input
-                        type="text"
-                        className="outline-none"
-                        placeholder=" "
-                        value={data.userName}
-                        onChange={(e) => {
-                            data.setUserName(e.target.value);
-                        }}
-                    />
-                    <label htmlFor="userName">Company ID</label>
-                </div>
-                <div className="input-box text-lg w-full bg-gray-100 rounded-2xl px-4">
-                    <input
-                        type="text"
-                        className="outline-none"
-                        placeholder=" "
-                        value={data.userName}
-                        onChange={(e) => {
-                            data.setUserName(e.target.value);
-                        }}
-                    />
-                    <label htmlFor="userName">Admin Full Name</label>
-                </div>
-                <div className="input-box text-lg w-full bg-gray-100 rounded-2xl px-4">
-                    <input
-                        type="text"
-                        className="outline-none"
-                        placeholder=" "
-                        value={data.userName}
-                        onChange={(e) => {
-                            data.setUserName(e.target.value);
-                        }}
-                    />
-                    <label htmlFor="userName">Email (Admin)</label>
-                </div>
-                <div className="input-box text-lg w-full bg-gray-100 rounded-2xl px-4">
-                    <input
-                        type="text"
-                        className="outline-none"
-                        placeholder=" "
-                        value={data.userName}
-                        onChange={(e) => {
-                            data.setUserName(e.target.value);
-                        }}
-                    />
-                    <label htmlFor="userName">Admin Username</label>
-                </div>
-                <div className="input-box text-lg w-full bg-gray-100 rounded-2xl px-4">
-                    <input
-                        type="number"
-                        className="outline-none"
-                        placeholder=" "
-                        value={data.userName}
-                        onChange={(e) => {
-                            data.setUserName(e.target.value);
-                        }}
-                    />
-                    <label htmlFor="userName">Founding Date in Year (Company)</label>
-                </div>
-                <div className="input-box-p text-lg bg-gray-100 rounded-2xl px-4">
-                    <input
-                        type={data.passwordHidden ? "password" : "text"}
-                        className="outline-none"
-                        placeholder=" "
-                        value={data.password}
-                        onChange={(e) => {
-                            data.setPassword(e.target.value);
-                        }}
-                    />
-                    <label htmlFor="userName">Password</label>
-                    <div className="absolute right-4 top-1/2 -translate-y-1/2 text-secondary-400" onClick={() => {
-                        data.passwordHidden ? data.setPasswordHidden(false) : data.setPasswordHidden(true);
-                    }}>
-                        {data.passwordHidden ? <Eye /> : <EyeOff />}
-                    </div>
-                </div>
-                <div className="input-box-p text-lg bg-gray-100 rounded-2xl px-4">
-                    <input
-                        type={data.passwordHidden ? "password" : "text"}
-                        className="outline-none"
-                        placeholder=" "
-                        value={data.password}
-                        onChange={(e) => {
-                            data.setPassword(e.target.value);
-                        }}
-                    />
-                    <label htmlFor="userName">Confirm Password</label>
-                    <div className="absolute right-4 top-1/2 -translate-y-1/2 text-secondary-400" onClick={() => {
-                        data.passwordHidden ? data.setPasswordHidden(false) : data.setPasswordHidden(true);
-                    }}>
-                        {data.passwordHidden ? <Eye /> : <EyeOff />}
-                    </div>
-                </div>
-            </div>
-        </>
-    )
-}
+// const CompanyRegister = ({ data }) => {
+//     return (
+//         <>
+//             <div className="inputFeilds w-full grid grid-cols-[repeat(auto-fit,minmax(max(250px,calc(50%-1rem)),1fr))] gap-6">
+//                 <div className="input-box text-lg w-full bg-gray-100 rounded-2xl px-4">
+//                     <input
+//                         type="text"
+//                         className="outline-none"
+//                         placeholder=" "
+//                         value={data.userName}
+//                         onChange={(e) => {
+//                             data.setUserName(e.target.value);
+//                         }}
+//                     />
+//                     <label htmlFor="userName">Company Name</label>
+//                 </div>
+//                 <div className="input-box text-lg w-full bg-gray-100 rounded-2xl px-4">
+//                     <input
+//                         type="text"
+//                         className="outline-none"
+//                         placeholder=" "
+//                         value={data.userName}
+//                         onChange={(e) => {
+//                             data.setUserName(e.target.value);
+//                         }}
+//                     />
+//                     <label htmlFor="userName">Company ID</label>
+//                 </div>
+
+
+
+
+
+//                 <div className="input-box text-lg w-full bg-gray-100 rounded-2xl px-4">
+//                     <input
+//                         type="text"
+//                         className="outline-none"
+//                         placeholder=" "
+//                         value={data.userName}
+//                         onChange={(e) => {
+//                             data.setUserName(e.target.value);
+//                         }}
+//                     />
+//                     <label htmlFor="userName">Admin Full Name</label>
+//                 </div>
+//                 <div className="input-box text-lg w-full bg-gray-100 rounded-2xl px-4">
+//                     <input
+//                         type="text"
+//                         className="outline-none"
+//                         placeholder=" "
+//                         value={data.userName}
+//                         onChange={(e) => {
+//                             data.setUserName(e.target.value);
+//                         }}
+//                     />
+//                     <label htmlFor="userName">Email (Admin)</label>
+//                 </div>
+//                 <div className="input-box text-lg w-full bg-gray-100 rounded-2xl px-4">
+//                     <input
+//                         type="text"
+//                         className="outline-none"
+//                         placeholder=" "
+//                         value={data.userName}
+//                         onChange={(e) => {
+//                             data.setUserName(e.target.value);
+//                         }}
+//                     />
+//                     <label htmlFor="userName">Admin Username</label>
+//                 </div>
+//                 <div className="input-box text-lg w-full bg-gray-100 rounded-2xl px-4">
+//                     <input
+//                         type="number"
+//                         className="outline-none"
+//                         placeholder=" "
+//                         value={data.userName}
+//                         onChange={(e) => {
+//                             data.setUserName(e.target.value);
+//                         }}
+//                     />
+//                     <label htmlFor="userName">Founding Date in Year (Company)</label>
+//                 </div>
+//                 <div className="input-box-p text-lg bg-gray-100 rounded-2xl px-4">
+//                     <input
+//                         type={data.passwordHidden ? "password" : "text"}
+//                         className="outline-none"
+//                         placeholder=" "
+//                         value={data.password}
+//                         onChange={(e) => {
+//                             data.setPassword(e.target.value);
+//                         }}
+//                     />
+//                     <label htmlFor="userName">Password</label>
+//                     <div className="absolute right-4 top-1/2 -translate-y-1/2 text-secondary-400" onClick={() => {
+//                         data.passwordHidden ? data.setPasswordHidden(false) : data.setPasswordHidden(true);
+//                     }}>
+//                         {data.passwordHidden ? <Eye /> : <EyeOff />}
+//                     </div>
+//                 </div>
+//                 <div className="input-box-p text-lg bg-gray-100 rounded-2xl px-4">
+//                     <input
+//                         type={data.passwordHidden ? "password" : "text"}
+//                         className="outline-none"
+//                         placeholder=" "
+//                         value={data.password}
+//                         onChange={(e) => {
+//                             data.setPassword(e.target.value);
+//                         }}
+//                     />
+//                     <label htmlFor="userName">Confirm Password</label>
+//                     <div className="absolute right-4 top-1/2 -translate-y-1/2 text-secondary-400" onClick={() => {
+//                         data.passwordHidden ? data.setPasswordHidden(false) : data.setPasswordHidden(true);
+//                     }}>
+//                         {data.passwordHidden ? <Eye /> : <EyeOff />}
+//                     </div>
+//                 </div>
+//             </div>
+//         </>
+//     )
+// }
 
 
 

@@ -16,7 +16,7 @@ const PersonalDetails = (props) => {
 
     const fullName = /^.{4,30}$/s;  
     const email = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;  
-    const userNameReg = /^(?!.*\.\.)(?!.*\_\_)[a-z0-9._]{4,16}$/i; //eslint-disable-line
+    const userNameReg = /^(?!.*\.\.)(?!.*\_\_)[a-z][a-z0-9._]{3,15}$/i; //eslint-disable-line
     const passwordReg = /^[a-zA-Z0-9_\-.@!#$]{4,16}$/;  
 
     const checkValues = () => {
@@ -35,6 +35,7 @@ const PersonalDetails = (props) => {
                 <div>
                     Username rules:
                     <ul className="list-disc ml-4 mt-1">
+                        <li>Must start with a letter</li>
                         <li>4 to 16 characters (letters, numbers, periods, underscores)</li>
                         <li>No consecutive periods (..) or underscores (__)</li>
                     </ul>
@@ -156,19 +157,31 @@ const PersonalDetails = (props) => {
 }
 
 const ProffesionalDetails = (props) => {
-    const companyIDReg = /^(?!.*\.\.)(?!.*\_\_)[a-z0-9._]{4,16}$/i; //eslint-disable-line
+    const companyIDReg = /^(?!.*\.\.)(?!.*\_\_)[a-z][a-z0-9._]{3,15}$/i; //eslint-disable-line
     const experienceNsalaryReg = /^[0-9]+$/; //eslint-disable-line
 
     const checkValues = () => {
         let isValid = true;
         if (!companyIDReg.test(props.companyIDE)) {
-            toast.error("Please enter a valid Company ID (4-16 characters).");
+            toast.error(
+                <div>
+                    Company ID rules:
+                    <ul className="list-disc ml-4 mt-1">
+                        <li>Must start with a letter</li>
+                        <li>4 to 16 characters (letters, numbers, periods, underscores)</li>
+                        <li>No consecutive periods (..) or underscores (__)</li>
+                    </ul>
+                </div>
+            );
             isValid = false;
         } else if (!props.departmentE) {
             toast.error("Please select a department.");
             isValid = false;
         } else if(!props.positionE){
             toast.error("Please write your position.(At which you are interested to work on).");
+            isValid = false;
+        } else if(!props.experienceE){
+            toast.error("Please write your experience. (You can also write 0)");
             isValid = false;
         } else if(!props.salaryE){
             toast.error("Please write your salary.(WHich you expect)");
