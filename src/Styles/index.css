@@ -128,7 +128,7 @@
   /* overflow: hidden; */
 }
 
-.input-box {
+.input-box, .input-box-p {
   position: relative;
   width: 100%;
   height: 50px;
@@ -136,13 +136,18 @@
   background-color: var(--color-secondary-100);
   font-size: 1rem;
 }
-.input-box input {
+.input-box > input {
+  position: absolute;
+  width: 90%;
+  height: 100%;
+}
+.input-box-p > input {
   position: absolute;
   width: 82%;
   height: 100%;
 }
 
-.input-box label {
+.input-box > label, .input-box-p > label {
   position: absolute;
   top: 50%;
   left: 1rem;
@@ -154,8 +159,8 @@
   pointer-events: none;
 }
 
-.input-box input:focus + label,
-.input-box input:not(:placeholder-shown) + label,
+.input-box>input:focus + label,
+.input-box>input:not(:placeholder-shown) + label,
 input:-webkit-autofill ~ label {
   top: -2%;
   font-size: 12px;
@@ -164,11 +169,21 @@ input:-webkit-autofill ~ label {
   font-weight: 600;
 }
 
-.input-box:focus-within {
+.input-box-p>input:focus + label,
+.input-box-p>input:not(:placeholder-shown) + label,
+input:-webkit-autofill ~ label {
+  top: -2%;
+  font-size: 12px;
+  background: linear-gradient(var(--color-white), var(--color-secondary-100));
+  color: var(--color-primary-600);
+  font-weight: 600;
+}
+
+.input-box:focus-within, .input-box-p:focus-within {
   border: 2px solid var(--color-primary-600);
 }
 
-.input-box input:focus ~ label {
+.input-box>input:focus ~ label, .input-box-p>input:focus ~ label  {
   color: var(
     --color-primary-600
   ); /* Label text becomes blue ONLY when actively typing */
@@ -176,6 +191,11 @@ input:-webkit-autofill ~ label {
 
 /* 5. Filled-But-Not-Focused Specific Colors */
 .input-box input:not(:placeholder-shown):not(:focus) ~ label {
+  color: var(
+    --color-gray-500
+  ); /* Subdued grey when data exists but user clicked away */
+}
+.input-box-p input:not(:placeholder-shown):not(:focus) ~ label {
   color: var(
     --color-gray-500
   ); /* Subdued grey when data exists but user clicked away */

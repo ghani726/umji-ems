@@ -1,6 +1,6 @@
 import { Eye, EyeOff } from "lucide-react";
 import { useContext } from "react";
-import Auth from "../contexts/Auth";
+import Auth from "../../contexts/Auth";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 
@@ -54,7 +54,7 @@ const LoginPage = () => {
           />
           <label htmlFor="userName">Username</label>
         </div>
-        <div className="input-box text-lg bg-gray-100 rounded-2xl px-4">
+        <div className="input-box-p text-lg bg-gray-100 rounded-2xl px-4">
           <input
             type={data.passwordHidden? "password": "text"}
             className="outline-none"
