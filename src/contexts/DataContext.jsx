@@ -1,34 +1,75 @@
 import { useState } from "react";
 import Data from "./Data";
 
-
 class Company {
-    constructor(name, companyID, adminName, email, username, foundingDate, password) {
-        this.name = name;
-        this.companyID = companyID;
-        this.adminName = adminName;
-        this.email = email;
-        this.username = username;
-        this.foundingDate = foundingDate;
-        this.password = password;
-        this.createdAt = new Date()
-        this.employees = []
-        this.tasks = []
-    }
-    addEmployee(name, email, birthday, userName, password, companyID, department){
-      const employee = new Employee(name, email, birthday, userName, password, companyID, department)
-      this.employees.push(employee)
-    }
-    addTask(title, description, assignedTo, deadline){
-      const task = new Task(title, description, assignedTo, deadline)
-      assignedTo.assignTask(task)
-    }
-
+  constructor(
+    name,
+    companyID,
+    adminName,
+    email,
+    username,
+    foundingDate,
+    password,
+  ) {
+    this.name = name;
+    this.companyID = companyID;
+    this.adminName = adminName;
+    this.email = email;
+    this.username = username;
+    this.foundingDate = foundingDate;
+    this.password = password;
+    this.createdAt = new Date();
+    this.employees = [];
+    this.tasks = [];
+  }
+  addEmployee(
+    name,
+    email,
+    birthday,
+    userName,
+    password,
+    companyID,
+    department,
+    position,
+    experience,
+    salary,
+  ) {
+    const employee = new Employee(
+      name,
+      email,
+      birthday,
+      userName,
+      password,
+      companyID,
+      department,
+      position,
+      experience,
+      salary,
+    );
+    this.employees.push(employee);
+  }
+  addTask(title, description, assignedTo, deadline) {
+    const task = new Task(title, description, assignedTo, deadline);
+    assignedTo.assignTask(task);
+  }
 }
 
 
+
+
 class Employee {
-  constructor(name, email, birthday, userName, password, companyID, department, position, experience, salary) {
+  constructor(
+    name,
+    email,
+    birthday,
+    userName,
+    password,
+    companyID,
+    department,
+    position,
+    experience,
+    salary,
+  ) {
     this.name = name;
     this.email = email;
     this.birthday = birthday;
@@ -39,11 +80,11 @@ class Employee {
     this.position = position;
     this.experience = experience;
     this.salary = salary;
-    this.createdAt = new Date()
-    this.tasks = []
+    this.createdAt = new Date();
+    this.tasks = [];
   }
-  assignTask(task){
-    this.tasks.push(task)
+  assignTask(task) {
+    this.tasks.push(task);
   }
 }
 
@@ -53,30 +94,91 @@ class Task {
     this.description = description;
     // this.assignedTo = assignedTo;
     this.deadline = deadline;
-    this.createdAt = new Date()
+    this.createdAt = new Date();
   }
 }
 
 const companyList = {
   companies: [],
-  addCompany(name, companyID, adminName, email, username, foundingDate, password){
-    const company = new Company(name, companyID, adminName, email, username, foundingDate, password)
-    this.companies.push(company)
-  }
-}
+  addCompany(
+    name,
+    companyID,
+    adminName,
+    email,
+    username,
+    foundingDate,
+    password,
+  ) {
+    const company = new Company(
+      name,
+      companyID,
+      adminName,
+      email,
+      username,
+      foundingDate,
+      password,
+    );
+    this.companies.push(company);
+  },
+};
+
+
+
+const company = companyList.addCompany("UMJI", "umji","Muhammad Ghani Ul Hassan", "ghani726@outlook.com", "ghani", 2026, "1122")
+const employee = companyList.companies[0].addEmployee("Zeeshan Malik", "zeeshan@outlook.com", "2008-02-08", "zeeshan", "4344", "umji", "Dev", "Full Stack Web Developer", "0", "3,00,000")
+
+
+
+localStorage.setItem("companies", JSON.stringify(companyList));
 
 
 
 const DataContext = ({ children }) => {
+
+
+
+  const [EmployeeDetails, setEmployeeDetails] = useState({
+    name: "",
+    email: "",
+    birthday: "", 
+    userName: "",
+    password: "",
+    companyID: "",
+    department: "",
+    position: "",
+    experience: 0,
+    salary: 0,
+  });
+
+  const [CompanyDetails, setCompanyDetails] = useState({
+    name: "",
+    companyID: "",
+    adminName: "",
+    email: "",
+    username: "",
+    foundingDate: 2026,
+    password: "",
+  });
   const [mobile, setMobile] = useState(false);
 
-  
   return (
-    
-    <Data.Provider value={{mobile, setMobile, companyList, Task, Employee, Company}}>
-        {children}
+    <Data.Provider
+      value={{
+        mobile,
+        setMobile,
+        companyList,
+        Task,
+        Employee,
+        Company,
+        EmployeeDetails,
+        setEmployeeDetails,
+        CompanyDetails,
+        setCompanyDetails,
+      }}
+    >
+      {children}
     </Data.Provider>
-  )
+  );
 };
 
 export default DataContext;

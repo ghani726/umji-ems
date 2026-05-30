@@ -19,28 +19,7 @@ const AuthContext = ({ children }) => {
 
 
 
-  const [EmployeeDetails, setEmployeeDetails] = useState({
-    name: "",
-    email: "",
-    birthday: "",
-    userName: "",
-    password: "",
-    companyID: "",
-    department: "",
-    position: "",
-    experience: 0,
-    salary: 0,
-  })
-
-  const [CompanyDetails, setCompanyDetails] = useState({
-    name: "",
-    companyID: "",
-    adminName: "",
-    email: "",
-    username: "",
-    foundingDate: 2026,
-    password: "",
-  })
+  
 
 
 
@@ -62,11 +41,6 @@ const AuthContext = ({ children }) => {
         setIsAdmin,
         activeTab,
         setActiveTab,
-        EmployeeDetails,
-        setEmployeeDetails,
-        CompanyDetails,
-        setCompanyDetails,
-
       }}
     >
       {children}

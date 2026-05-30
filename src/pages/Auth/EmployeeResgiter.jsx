@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from 'react'
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import Auth from '../../contexts/Auth';
+import Data from '../../contexts/Data';
 
 const PersonalDetails = (props) => {
 
@@ -11,6 +12,8 @@ const PersonalDetails = (props) => {
     const [date, setDate] = useState(today);
 
     const data = useContext(Auth);
+
+    const dataBase = useContext(Data)
 
     //Regexes
 
@@ -49,19 +52,61 @@ const PersonalDetails = (props) => {
         }
         else if (props.passwordE !== props.confirmPasswordE) {
             toast.error("Passwords don't match.");
-            isValid = false;
+            isValid = false; //eslint-disable-line
         }
 
-        if (isValid) {
-            props.setStep(1);
-        }
-        props.setNext(false);
+        // if (isValid) {
+        //     props.setStep(1);
+        // }
+        // props.setNext(false);
+
+        return isValid
     }
 
+    const checkInDB = () => {
+        let isValidInDB = true;
+
+        console.log(dataBase);
+        console.log(dataBase.companyList.companies);
+
+        dataBase.companyList.companies.map((company,indexOfCompany)=>{
+            if(props.emailE===company.email){
+                toast.error("Account with this email already exists. Try logging in.")
+                isValidInDB = false;
+            } else if(props.userNameE===company.username){
+                toast.error("This username has already been taken by someone else.")
+                isValidInDB = false;
+            } else {
+                company.employees.map((employee, indexOfEmployee)=>{
+                    if(props.emailE===employee.email){
+                        toast.error("Account with this email already exists. Try logging in.")
+                        isValidInDB = false;
+                    } else if(props.userNameE===employee.userName){
+                        toast.error("This username has already been taken by someone else.")
+                        isValidInDB = false;
+                    }
+                })
+            }
+        })
+
+        // console.log(props.emailE);
+        // console.log(props.emailE.trim());
+        
+        // if (isValidInDB) {
+        //     props.setStep(1);
+        // }
+        // props.setNext(false);
+
+        return isValidInDB
+    }
     useEffect(() => {
         if (props.next) {
             toast.dismiss(); // Clears old toast notifications instantly
-            checkValues();
+            if(checkInDB()&&checkValues()){
+                props.setStep(1);
+            } else {
+                props.setNext(false)
+            }
         }
     }, [props.next]); // eslint-disable-line
 
@@ -86,7 +131,7 @@ const PersonalDetails = (props) => {
                     type="text"
                     className="outline-none"
                     placeholder=" "
-                    value={props.emailE}
+                    value={props.emailE.trim()}
                     onChange={(e) => {
                     props.setEmailE(e.target.value);
                     }}
@@ -111,7 +156,7 @@ const PersonalDetails = (props) => {
                     type="text"
                     className="outline-none"
                     placeholder=" "
-                    value={props.userNameE}
+                    value={props.userNameE.trim()}
                     onChange={(e) => {
                     props.setUserNameE(e.target.value);
                     }}
