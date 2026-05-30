@@ -63,7 +63,7 @@ const PersonalDetails = (props) => {
             toast.dismiss(); // Clears old toast notifications instantly
             checkValues();
         }
-    }, [props.next]); // ⚡ ONLY runs when the "Next" button sets this to true
+    }, [props.next]); // eslint-disable-line
 
     
 
@@ -200,7 +200,7 @@ const ProffesionalDetails = (props) => {
             toast.dismiss();
             checkValues();
         }
-    }, [props.next]);
+    }, [props.next]); // eslint-disable-line
 
     return (
         <>

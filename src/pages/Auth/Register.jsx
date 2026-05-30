@@ -1,142 +1,11 @@
-import { useState } from "react"
-import { Eye, EyeOff } from "lucide-react";
-import { useContext } from "react";
+import { useState, useContext } from "react"
 import Auth from "../../contexts/Auth";
 import EmployeeRegister from "./EmployeeResgiter";
 import CompanyRegister from "./CompanyRegister";
 
-
-
-
-
-
-
-// const CompanyRegister = ({ data }) => {
-//     return (
-//         <>
-//             <div className="inputFeilds w-full grid grid-cols-[repeat(auto-fit,minmax(max(250px,calc(50%-1rem)),1fr))] gap-6">
-//                 <div className="input-box text-lg w-full bg-gray-100 rounded-2xl px-4">
-//                     <input
-//                         type="text"
-//                         className="outline-none"
-//                         placeholder=" "
-//                         value={data.userName}
-//                         onChange={(e) => {
-//                             data.setUserName(e.target.value);
-//                         }}
-//                     />
-//                     <label htmlFor="userName">Company Name</label>
-//                 </div>
-//                 <div className="input-box text-lg w-full bg-gray-100 rounded-2xl px-4">
-//                     <input
-//                         type="text"
-//                         className="outline-none"
-//                         placeholder=" "
-//                         value={data.userName}
-//                         onChange={(e) => {
-//                             data.setUserName(e.target.value);
-//                         }}
-//                     />
-//                     <label htmlFor="userName">Company ID</label>
-//                 </div>
-
-
-
-
-
-//                 <div className="input-box text-lg w-full bg-gray-100 rounded-2xl px-4">
-//                     <input
-//                         type="text"
-//                         className="outline-none"
-//                         placeholder=" "
-//                         value={data.userName}
-//                         onChange={(e) => {
-//                             data.setUserName(e.target.value);
-//                         }}
-//                     />
-//                     <label htmlFor="userName">Admin Full Name</label>
-//                 </div>
-//                 <div className="input-box text-lg w-full bg-gray-100 rounded-2xl px-4">
-//                     <input
-//                         type="text"
-//                         className="outline-none"
-//                         placeholder=" "
-//                         value={data.userName}
-//                         onChange={(e) => {
-//                             data.setUserName(e.target.value);
-//                         }}
-//                     />
-//                     <label htmlFor="userName">Email (Admin)</label>
-//                 </div>
-//                 <div className="input-box text-lg w-full bg-gray-100 rounded-2xl px-4">
-//                     <input
-//                         type="text"
-//                         className="outline-none"
-//                         placeholder=" "
-//                         value={data.userName}
-//                         onChange={(e) => {
-//                             data.setUserName(e.target.value);
-//                         }}
-//                     />
-//                     <label htmlFor="userName">Admin Username</label>
-//                 </div>
-//                 <div className="input-box text-lg w-full bg-gray-100 rounded-2xl px-4">
-//                     <input
-//                         type="number"
-//                         className="outline-none"
-//                         placeholder=" "
-//                         value={data.userName}
-//                         onChange={(e) => {
-//                             data.setUserName(e.target.value);
-//                         }}
-//                     />
-//                     <label htmlFor="userName">Founding Date in Year (Company)</label>
-//                 </div>
-//                 <div className="input-box-p text-lg bg-gray-100 rounded-2xl px-4">
-//                     <input
-//                         type={data.passwordHidden ? "password" : "text"}
-//                         className="outline-none"
-//                         placeholder=" "
-//                         value={data.password}
-//                         onChange={(e) => {
-//                             data.setPassword(e.target.value);
-//                         }}
-//                     />
-//                     <label htmlFor="userName">Password</label>
-//                     <div className="absolute right-4 top-1/2 -translate-y-1/2 text-secondary-400" onClick={() => {
-//                         data.passwordHidden ? data.setPasswordHidden(false) : data.setPasswordHidden(true);
-//                     }}>
-//                         {data.passwordHidden ? <Eye /> : <EyeOff />}
-//                     </div>
-//                 </div>
-//                 <div className="input-box-p text-lg bg-gray-100 rounded-2xl px-4">
-//                     <input
-//                         type={data.passwordHidden ? "password" : "text"}
-//                         className="outline-none"
-//                         placeholder=" "
-//                         value={data.password}
-//                         onChange={(e) => {
-//                             data.setPassword(e.target.value);
-//                         }}
-//                     />
-//                     <label htmlFor="userName">Confirm Password</label>
-//                     <div className="absolute right-4 top-1/2 -translate-y-1/2 text-secondary-400" onClick={() => {
-//                         data.passwordHidden ? data.setPasswordHidden(false) : data.setPasswordHidden(true);
-//                     }}>
-//                         {data.passwordHidden ? <Eye /> : <EyeOff />}
-//                     </div>
-//                 </div>
-//             </div>
-//         </>
-//     )
-// }
-
-
-
 const RegisterPage = () => {
     const data = useContext(Auth);
-
-
+    
 
     // Employee Details
 
@@ -151,7 +20,6 @@ const RegisterPage = () => {
     const [positionE, setPositionE] = useState("")
     const [experienceE, setsxperienceE] = useState(0)
     const [salaryE, setSalaryE] = useState(0)
-
 
     // Company Details
 
@@ -190,12 +58,11 @@ const RegisterPage = () => {
                         // isEmployee?setIsEmployee(false):setIsEmployee(true)
                         data.setActiveTab(1)
                     }} className={`z-10 rounded-xl p-2.5 px-4 text-secondary-800 font-semibold text-sm cursor-pointer active:scale-95 animate-fade-in transition-all ease-in-out duration-300`}>Company</div>
-            </div>
+                </div>
 
             {data.activeTab ? <CompanyRegister data={data} nameC={nameC} setNameC={setNameC} companyID={companyID} setCompanyID={setCompanyID} adminNameC={adminNameC} setAdminNameC={setAdminNameC} emailC={emailC} setEmailC={setEmailC} usernameC={usernameC} setusernameC={setusernameC} foundingDateC={foundingDateC} setFoundingDateC={setFoundingDateC} passwordC={passwordC} setPasswordC={setPasswordC} confirmPasswordC={confirmPasswordC} setConfirmPasswordC={setConfirmPasswordC}></CompanyRegister> : <EmployeeRegister data={data} nameE={nameE} setNameE={setNameE} emailE={emailE} setEmailE={setEmailE} birthdayE={birthdayE} setBirthdayE={setBirthdayE} userNameE={userNameE} setUserNameE={setUserNameE} passwordE={passwordE} setPasswordE={setPasswordE} confirmPasswordE={confirmPasswordE} setConfirmPasswordE={setConfirmPasswordE} companyIDE={companyIDE} setCompanyIDE={setCompanyIDE} departmentE={departmentE} setdepartmentE={setdepartmentE} positionE={positionE} setPositionE={setPositionE} experienceE={experienceE} setsxperienceE={setsxperienceE} salaryE={salaryE} setSalaryE={setSalaryE}></EmployeeRegister>}
 
-
-        </div>
+            </div>
         </div>
         
     )

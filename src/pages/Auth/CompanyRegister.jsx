@@ -1,8 +1,7 @@
 import { ArrowRight, Building2, Eye, EyeOff, UserRound } from 'lucide-react';
-import { useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
-import Auth from '../../contexts/Auth';
 
 const CompanyDetails = (props) => {
     //Regexes
