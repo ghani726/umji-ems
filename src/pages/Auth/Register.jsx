@@ -20,7 +20,7 @@ const RegisterPage = () => {
   const [companyIDE, setCompanyIDE] = useState("");
   const [departmentE, setdepartmentE] = useState("");
   const [positionE, setPositionE] = useState("");
-  const [experienceE, setsxperienceE] = useState(0);
+  const [experienceE, setsxperienceE] = useState("");
   const [salaryE, setSalaryE] = useState(0);
   const [successOfRegistrationAsEmployee, setSuccessOfRegistrationAsEmployee] =
     useState(false);
