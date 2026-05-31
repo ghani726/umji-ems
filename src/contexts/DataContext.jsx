@@ -86,8 +86,9 @@ class Task {
   }
 }
 
-
 const dbData = JSON.parse(localStorage.getItem("companies"))
+
+
 const companyList = {
   companies: [...dbData.companies],
   addCompany(
@@ -105,9 +106,15 @@ const companyList = {
     this.companies.push(company);
   },
 };
+
+console.log(dbData);
+
 console.log(companyList);
 
 localStorage.setItem("companies", JSON.stringify(companyList));
+
+
+console.log(companyList);
 
 const DataContext = ({ children }) => {
   const [EmployeeDetails, setEmployeeDetails] = useState({
@@ -133,12 +140,6 @@ const DataContext = ({ children }) => {
     password: "",
   });
 
-
-  
-  
-  
-    
-
   const [mobile, setMobile] = useState(false);
 
   const [successOfRegistrationAsEmployee, setSuccessOfRegistrationAsEmployee] =
@@ -147,9 +148,12 @@ const DataContext = ({ children }) => {
     useState(false);
 
 
+
   if(successOfRegistrationAsEmployee){
 
-    companyList.companies.map((elem, ind)=>{
+    companyList.companies.map(elem=>{
+
+      
       console.log(elem);
       
       if(elem.companyID===EmployeeDetails.companyID){
@@ -172,7 +176,6 @@ const DataContext = ({ children }) => {
     console.log(companyList);
   }
 
-  
   return (
     <Data.Provider
       value={{

@@ -220,6 +220,7 @@ const ProffesionalDetails = (props) => {
             <li>Must start with a letter</li>
             <li>4 to 16 characters (letters, numbers, periods, underscores)</li>
             <li>No consecutive periods (..) or underscores (__)</li>
+            <li>No space allowed</li>
           </ul>
         </div>,
       );
@@ -247,13 +248,27 @@ const ProffesionalDetails = (props) => {
     let isValidInDB = true;
 
     //eslint-disable-next-line
-    dataBase.companyList.companies.map((company, indexOfCompany) => {
-      if (props.companyIDE !== company.companyID) {
-        toast.error("No Company exists with this id.");
-        isValidInDB = false;
-      }
-    });
+    const companies = dataBase.companyList.companies
+    
+    // Array to store whether all companies have the username or not.
+    const trueAndFalse = []
 
+    // Looping over companies
+    for(let i=0; i<companies.length; i++){
+      let company = companies[i]
+      if (props.companyIDE.trim() !== company.companyID) {
+        trueAndFalse.push(false)
+      } else if(props.companyIDE.trim() === company.companyID){
+        trueAndFalse.push(true)
+        break;
+      }
+    }
+
+    // When the array does(line:254) not has any true, then throw error and prevent going to next step.
+    if(!trueAndFalse.includes(true)){
+      isValidInDB = false;
+      toast.error("No Company exists with this id.");
+    }
     return isValidInDB;
   };
 
@@ -261,13 +276,13 @@ const ProffesionalDetails = (props) => {
     if (props.next) {
       toast.dismiss(); // Clears old toast notifications instantly
       if (checkInDB() && checkValues()) {
-        toast.success("Account created successfully.", );
-        
+        toast.success("Account created successfully.");
+
         props.setSuccessOfRegistrationAsEmployee(true);
         dataBase.setEmployeeDetails({
           name: props.nameE,
           email: props.emailE,
-          birthday: props.birthdayE, 
+          birthday: props.birthdayE,
           userName: props.userNameE,
           password: props.passwordE,
           companyID: props.companyIDE,
@@ -275,14 +290,13 @@ const ProffesionalDetails = (props) => {
           position: props.positionE,
           experience: props.experienceE,
           salary: props.salaryE,
-        })
+        });
 
         props.navigate("/login", { replace: true });
       }
       props.setNext(false);
-      // props.setSuccessOfRegistrationAsEmployee(false)  
-    //   props.setSuccessOfRegistrationAsEmployee(false)
-    
+      // props.setSuccessOfRegistrationAsEmployee(false)
+      //   props.setSuccessOfRegistrationAsEmployee(false)
     }
   }, [props.next]); // eslint-disable-line
 
@@ -376,13 +390,6 @@ const EmployeeRegister = (props) => {
   //   Next button State
   const [next, setNext] = useState(false);
 
-    const dataBase = useContext(Data);
-
-
-
-
-
-  
   return (
     <>
       <div className="flex flex-col gap-6 w-full">
