@@ -280,7 +280,7 @@ const ProffesionalDetails = (props) => {
         props.navigate("/login", { replace: true });
       }
       props.setNext(false);
-      // props.setSuccessOfRegistrationAsEmployee(false)
+      // props.setSuccessOfRegistrationAsEmployee(false)  
     //   props.setSuccessOfRegistrationAsEmployee(false)
     
     }

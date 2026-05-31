@@ -91,22 +91,16 @@ const dbData = JSON.parse(localStorage.getItem("companies"))
 const companyList = {
   companies: [...dbData.companies],
   addCompany(
-    name,
-    companyID,
-    adminName,
-    email,
-    username,
-    foundingDate,
-    password,
+    obj
   ) {
     const company = new Company(
-      name,
-      companyID,
-      adminName,
-      email,
-      username,
-      foundingDate,
-      password,
+      obj.name,
+      obj.companyID,
+      obj.adminName,
+      obj.email,
+      obj.username,
+      obj.foundingDate,
+      obj.password,
     );
     this.companies.push(company);
   },
@@ -170,6 +164,12 @@ const DataContext = ({ children }) => {
   //   localStorage.setItem("companies", JSON.stringify(companyList));
   //   console.log("Hello");
   //   console.log(companyList);
+  }
+  if(successOfRegistrationAsCompany){
+    companyList.addCompany(CompanyDetails)
+    localStorage.setItem("companies", JSON.stringify(companyList));
+    console.log("Company Added");
+    console.log(companyList);
   }
 
   

@@ -198,6 +198,15 @@ const AdminDetails = (props) => {
         toast.success("Company created successfully.");
         props.navigate("/login", { replace: true });
         props.setSuccessOfRegistrationAsCompany(true)
+        dataBase.setCompanyDetails({
+          name: props.nameC,
+          companyID: props.companyID,
+          adminName: props.adminNameC,
+          email: props.emailC,
+          username: props.usernameC,
+          foundingDate: props.foundingDateC,
+          password: props.passwordC,
+        })
       }
       props.setNext(false);
     }
