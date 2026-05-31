@@ -86,8 +86,10 @@ class Task {
   }
 }
 
+
+const dbData = JSON.parse(localStorage.getItem("companies"))
 const companyList = {
-  companies: [],
+  companies: [...dbData.companies],
   addCompany(
     name,
     companyID,
@@ -109,28 +111,7 @@ const companyList = {
     this.companies.push(company);
   },
 };
-
-const company = companyList.addCompany(
-  "UMJI",
-  "umji",
-  "Muhammad Ghani Ul Hassan",
-  "ghani726@outlook.com",
-  "ghani",
-  2026,
-  "1122",
-);
-const employee = companyList.companies[0].addEmployee(
-  "Zeeshan Malik",
-  "zeeshan@outlook.com",
-  "2008-02-08",
-  "zeeshan",
-  "4344",
-  "umji",
-  "Dev",
-  "Full Stack Web Developer",
-  "0",
-  "3,00,000",
-);
+console.log(companyList);
 
 localStorage.setItem("companies", JSON.stringify(companyList));
 
@@ -158,6 +139,9 @@ const DataContext = ({ children }) => {
     password: "",
   });
 
+
+  
+  
   
     
 
@@ -170,16 +154,23 @@ const DataContext = ({ children }) => {
 
 
   if(successOfRegistrationAsEmployee){
-    setTimeout(() => {
-      const employee = companyList.companies[0].addEmployee(EmployeeDetails);
-      localStorage.setItem("companies", JSON.stringify(companyList));
-      console.log("Hello");
-      console.log(companyList);
-    }, 2000);
+
+    companyList.companies.map((elem, ind)=>{
+      console.log(elem);
+      
+      if(elem.companyID===EmployeeDetails.companyID){
+        elem.addEmployee(EmployeeDetails);
+        localStorage.setItem("companies", JSON.stringify(companyList));
+        console.log("Hello");
+        console.log(companyList);
+      }
+    })
+
+    // const employee = companyList.companies[0].addEmployee(EmployeeDetails);
+  //   localStorage.setItem("companies", JSON.stringify(companyList));
+  //   console.log("Hello");
+  //   console.log(companyList);
   }
-
-
-  console.log(companyList);
 
   
   return (

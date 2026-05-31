@@ -5,6 +5,8 @@ import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 
 const LoginPage = () => {
+  const dbData = JSON.parse(localStorage.getItem("companies"))
+
   const data = useContext(Auth);
 
   const check = () =>{

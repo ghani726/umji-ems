@@ -262,7 +262,7 @@ const ProffesionalDetails = (props) => {
       toast.dismiss(); // Clears old toast notifications instantly
       if (checkInDB() && checkValues()) {
         toast.success("Account created successfully.", );
-        props.navigate("/login", { replace: true });
+        
         props.setSuccessOfRegistrationAsEmployee(true);
         dataBase.setEmployeeDetails({
           name: props.nameE,
@@ -276,8 +276,11 @@ const ProffesionalDetails = (props) => {
           experience: props.experienceE,
           salary: props.salaryE,
         })
+
+        props.navigate("/login", { replace: true });
       }
       props.setNext(false);
+      // props.setSuccessOfRegistrationAsEmployee(false)
     //   props.setSuccessOfRegistrationAsEmployee(false)
     
     }
